@@ -83,7 +83,7 @@ def build_package(project: Project, video: dict, shot: dict, ratio: str) -> dict
             "style": ov.get("style", "body"),
             "direction": "rtl",
             "font": project.campaign.get("brand", {}).get("font_path"),
-            "color": ov.get("color", project.campaign.get("brand", {}).get("colors", {}).get("beige")),
+            "color": ov.get("color", project.campaign.get("brand", {}).get("roles", {}).get("light")),
         })
 
     gen = shot.get("generation", {})

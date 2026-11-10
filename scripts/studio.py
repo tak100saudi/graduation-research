@@ -125,7 +125,7 @@ def cmd_render(a, project):
 
 def cmd_burn(a, project):
     for ratio in a.ratio:
-        print(render.burn(project, a.video, ratio, draft=a.draft).relative_to(ROOT))
+        print(render.burn(project, a.video, ratio, draft=a.draft, logo_variant=a.logo).relative_to(ROOT))
     return 0
 
 
@@ -167,6 +167,7 @@ def main(argv=None):
     r.add_argument("--allow-silent", action="store_true"); r.add_argument("--allow-reframe", action="store_true")
     b = sub.add_parser("burn"); b.add_argument("--video", required=True)
     b.add_argument("--ratio", nargs="+", choices=["9x16", "16x9"], required=True); b.add_argument("--draft", action="store_true")
+    b.add_argument("--logo", choices=["primary", "dark"], default="primary", help="dark = logo variant for dark backgrounds")
     q = sub.add_parser("qc"); q.add_argument("--video", required=True)
     q.add_argument("--ratio", nargs="+", choices=["9x16", "16x9"], required=True); q.add_argument("--file")
     sv = sub.add_parser("serve"); sv.add_argument("--port", type=int, default=8765)

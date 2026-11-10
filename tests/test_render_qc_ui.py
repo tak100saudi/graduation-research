@@ -65,7 +65,7 @@ def test_render_refuses_missing_clips_audio_and_reframing(proj):
 def test_burn_requires_official_brand_unless_draft(proj):
     media(proj)
     render.render(proj, "DEMO1", "9x16")
-    with pytest.raises(render.RenderError, match="Official"):
+    with pytest.raises(render.RenderError, match="Cannot make a final"):
         render.burn(proj, "DEMO1", "9x16")
     out = render.burn(proj, "DEMO1", "9x16", draft=True)
     assert out.name == "DEMO1_9x16_DRAFT.mp4" and out.stat().st_size > 1000
@@ -98,3 +98,22 @@ def test_dashboard_state_and_review_api(proj):
             urllib.request.urlopen(bad)
     finally:
         httpd.shutdown()
+
+
+@needs_ffmpeg
+def test_draft_burn_uses_official_logo_untouched(tmp_path):
+    import copy, shutil
+    from conftest import CAMPAIGN, REPO, write_project
+    c = copy.deepcopy(CAMPAIGN)
+    c["brand"].update({"logo_supplied": True, "logo_path": "assets/brand/logo_transparent.png",
+                       "logo_dark_bg_path": "assets/brand/logo_transparent_for_dark_bg.png"})
+    proj = write_project(tmp_path, campaign=c)
+    for f in ("logo_transparent.png", "logo_transparent_for_dark_bg.png"):
+        shutil.copy(REPO / "assets" / "brand" / f, tmp_path / "assets" / "brand" / f)
+    media(proj)
+    render.render(proj, "DEMO1", "9x16")
+    with pytest.raises(render.RenderError, match="font"):
+        render.burn(proj, "DEMO1", "9x16")
+    out = render.burn(proj, "DEMO1", "9x16", draft=True, logo_variant="dark")
+    assert out.name.endswith("_DRAFT.mp4")
+    assert abs(float(qc.probe(out)["format"]["duration"]) - 3.0) < 0.1

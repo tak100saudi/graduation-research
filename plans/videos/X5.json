@@ -12,5 +12,16 @@
     "9x16",
     "16x9"
   ],
-  "shots": []
+  "shots": [],
+  "mandatory_corrections": [
+    {
+      "replace": "«حجوزات مؤكدة ومدفوعة» للملاك",
+      "with": "عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات",
+      "claims": [
+        "CLM_PARTNER_NEW_CLIENTS",
+        "CLM_PARTNER_TRIAL"
+      ],
+      "source": "brand_facts.md"
+    }
+  ]
 }

@@ -11,3 +11,7 @@ assets/screen_recordings/*
 output/
 state/approvals.json
 state/jobs/
+# Owner documents and the campaign brief stay local: this repository is PUBLIC.
+source/owner/
+source/source_campaign.pdf
+source/extracted/

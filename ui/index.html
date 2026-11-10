@@ -66,10 +66,19 @@ function showOverview(){
   const p=S.providers.map(p=>`<div class="card"><b class="en">${p.provider}</b> ${p.ready?'✅':'⛔'}<ul class="issues">${p.problems.map(x=>`<li class="b en">${esc(x)}</li>`).join('')}</ul></div>`).join('');
   const chars=S.continuity.characters.map(c=>`<li><code>${esc(c.id)}</code> — ${c.defined?esc(c.anchor_description):'<span class="b">غير معرّف</span>'} · الموافقة: ${esc(c.consent.status)}</li>`).join('');
   const locs=S.continuity.locations.map(c=>`<li><code>${esc(c.id)}</code> — ${c.defined?esc(c.anchor_description):'<span class="b">غير معرّف</span>'}</li>`).join('');
+  const b=S.campaign.brand||{},f=S.product_flow||{};
+  const brand=`<div class="card" style="margin-top:12px"><h3>الهوية</h3><p><b>${esc(b.official_tagline)}</b> · ${esc(b.launch_line)}</p>
+    ${b.logo_supplied?`<img src="/brand/logo" alt="Season Venue" style="height:90px;background:#fff;border-radius:8px;padding:6px">`:''}
+    <p>${Object.entries(b.roles||{}).map(([k,c])=>`<span class="pill" style="background:${c};color:${k==='light'?'#222':'#fff'}">${k} ${c}</span>`).join(' ')}</p>
+    <p class="w">الخط المرخّص: ${b.font_licensed?'✅':'⛔ غير متوفر'} · نظام الأخضر: ${esc(b.green_system_decision)} · CTA: ${esc(b.cta_placeholder)}</p></div>`;
+  const flow=`<div class="card" style="margin-top:12px"><h3>نموذج الطلب الحقيقي ${f.verified_against_demo?'✅':'⛔ غير متحقق منه'}</h3>
+    <ol>${(f.steps||[]).map(s=>`<li>${esc(s.label_ar)} <code>${esc(s.id)}</code></li>`).join('')}</ol>
+    <p class="w">${(f.verification_log||[]).map(x=>esc(x.date+': '+x.result)).join('<br>')}</p></div>`;
+  const banned=`<div class="card" style="margin-top:12px"><h3>عبارات محظورة (brand_facts)</h3><table><tbody>${(S.banned_phrases||[]).map(x=>`<tr><td class="e">${esc(x.phrase)}</td><td>${esc(x.use_instead)}</td></tr>`).join('')}</tbody></table></div>`;
   $('#detail').innerHTML=`<div class="card"><h3>الحملة</h3><p>${esc(S.campaign.source_note||'')}</p>${issues(S.global_issues)}</div>
   <h3>مزودو الفيديو</h3><div class="grid3">${p}</div>
   <div class="card" style="margin-top:12px"><h3>ثبات الشخصيات والمواقع</h3><b>الشخصيات</b><ul>${chars}</ul><b>المواقع</b><ul>${locs}</ul>
-  <b>الألوان</b> ${S.continuity.global_look.palette_tokens.map(c=>`<span class="pill" style="background:${c};color:#fff">${c}</span>`).join(' ')}</div>`;
+  <b>الألوان</b> ${S.continuity.global_look.palette_tokens.map(c=>`<span class="pill" style="background:${c};color:${/^#F/i.test(c)?'#222':'#fff'};border:1px solid var(--line)">${c}</span>`).join(' ')}</div>${brand}${flow}${banned}`;
 }
 function showVideo(v){
   const total=v.duration_s||v.shots.reduce((a,s)=>Math.max(a,s.end_s),0)||1;

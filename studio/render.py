@@ -54,16 +54,17 @@ def overlay_events(video: dict) -> list[dict]:
 
 def write_ass(project: Project, video: dict, ratio: str, dest: Path, font_name: str = "Arial") -> Path:
     w, h = project.campaign["output_targets"][ratio]
-    colors = project.campaign.get("brand", {}).get("colors", {})
+    roles = project.campaign.get("brand", {}).get("roles", {})
+    light, primary, accent = roles.get("light", "#FFFFFF"), roles.get("primary", "#000000"), roles.get("accent", "#FFFFFF")
     base = max(36, int(h * 0.032))
     lines = [
         "[Script Info]", "ScriptType: v4.00+", f"PlayResX: {w}", f"PlayResY: {h}", "WrapStyle: 0", "",
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BackColour, Bold, Alignment, MarginL, MarginR, MarginV, BorderStyle, Outline, Shadow, Encoding",
-        f"Style: headline,{font_name},{int(base*1.6)},{_ass_color(colors.get('beige'))},{_ass_color(colors.get('green'))},&H64000000,1,5,80,80,{int(h*0.12)},1,3,0,178",
-        f"Style: body,{font_name},{base},{_ass_color(colors.get('beige'))},{_ass_color(colors.get('green'))},&H64000000,0,2,80,80,{int(h*0.18)},1,2,0,178",
+        f"Style: headline,{font_name},{int(base*1.6)},{_ass_color(light)},{_ass_color(primary)},&H64000000,1,5,80,80,{int(h*0.12)},1,3,0,178",
+        f"Style: body,{font_name},{base},{_ass_color(light)},{_ass_color(primary)},&H64000000,0,2,80,80,{int(h*0.18)},1,2,0,178",
         f"Style: subtitle,{font_name},{int(base*0.9)},&H00FFFFFF,&H00000000,&H80000000,0,2,80,80,{int(h*0.06)},3,1,0,178",
-        f"Style: cta,{font_name},{int(base*1.2)},{_ass_color(colors.get('muted_gold'))},{_ass_color(colors.get('green'))},&H64000000,1,2,80,80,{int(h*0.10)},1,2,0,178",
+        f"Style: cta,{font_name},{int(base*1.2)},{_ass_color(accent)},{_ass_color(primary)},&H64000000,1,2,80,80,{int(h*0.10)},1,2,0,178",
         "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
     ]
     for ev in overlay_events(video):
@@ -173,13 +174,27 @@ def render(project: Project, vid: str, ratio: str, allow_silent: bool = False, a
     save_json(layers, {
         "video_id": vid, "ratio": ratio, "clean_picture": clean.name, "overlays_ass": ass.name,
         "logo": project.campaign.get("brand", {}).get("logo_path"),
-        "official_brand_assets": project.campaign.get("brand", {}).get("official_assets_present", False),
+        "logo_dark_bg": project.campaign.get("brand", {}).get("logo_dark_bg_path"),
+        "logo_rule": project.campaign.get("brand", {}).get("logo_rule"),
+        "font_licensed": project.campaign.get("brand", {}).get("font_licensed", False),
         "events": overlay_events(video),
     })
     return {"clean": clean, "ass": ass, "layers": layers}
 
 
-def burn(project: Project, vid: str, ratio: str, draft: bool = False) -> Path:
+def final_blockers(project: Project) -> list[str]:
+    brand = project.campaign.get("brand", {})
+    out = []
+    if not brand.get("logo_supplied"):
+        out.append("official logo not supplied")
+    if not (brand.get("font_licensed") and (project.root / brand.get("font_path", "")).is_file()):
+        out.append("licensed brand font not supplied")
+    if brand.get("green_system_decision", "pending") == "pending":
+        out.append("owner has not chosen the green system")
+    return out
+
+
+def burn(project: Project, vid: str, ratio: str, draft: bool = False, logo_variant: str = "primary") -> Path:
     """Burn the overlay layer (and official logo) into a delivery file."""
     brand = project.campaign.get("brand", {})
     outdir = project.root / "output" / vid
@@ -188,15 +203,18 @@ def burn(project: Project, vid: str, ratio: str, draft: bool = False) -> Path:
     if not clean.exists() or not ass.exists():
         raise RenderError("Run render first")
     font = project.root / brand.get("font_path", "")
-    logo = project.root / brand.get("logo_path", "")
-    official = brand.get("official_assets_present") and font.is_file() and logo.is_file()
-    if not official and not draft:
-        raise RenderError("Official Season Venue font/logo not supplied; use --draft for an internal review copy")
-    out = outdir / f"{vid}_{ratio}_{'final' if official and not draft else 'DRAFT'}.mp4"
+    logo_key = "logo_dark_bg_path" if logo_variant == "dark" else "logo_path"
+    logo = project.root / brand.get(logo_key, "")
+    blockers = final_blockers(project)
+    if blockers and not draft:
+        raise RenderError("Cannot make a final: " + "; ".join(blockers) + ". Use --draft for an internal review copy")
+    final = not blockers and not draft
+    out = outdir / f"{vid}_{ratio}_{'final' if final else 'DRAFT'}.mp4"
     fontsdir = str(font.parent) if font.is_file() else str(project.root / "assets" / "brand")
     vf = f"ass={ass}:fontsdir={fontsdir}"
     cmd = [ffmpeg_bin(), "-y", "-hide_banner", "-loglevel", "error", "-i", str(clean)]
-    if official:
+    if brand.get("logo_supplied") and logo.is_file():
+        # Official logo, used as-is (scaled only, never recoloured or regenerated).
         w, _ = project.campaign["output_targets"][ratio]
         cmd += ["-i", str(logo), "-filter_complex",
                 f"[0:v]{vf}[t];[1:v]scale={int(w*0.22)}:-1[lg];[t][lg]overlay=W-w-{int(w*0.05)}:{int(w*0.05)}[v]",

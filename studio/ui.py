@@ -47,13 +47,15 @@ def build_state(project: Project) -> dict:
         except Exception as e:  # noqa: BLE001 - surface any config problem in the UI
             providers.append({"provider": name, "ready": False, "problems": [str(e)]})
     return {
-        "campaign": {k: project.campaign.get(k) for k in ("campaign", "source_status", "source_note", "expected_video_count", "brand")},
+        "campaign": {k: project.campaign.get(k) for k in ("campaign", "source_status", "source_note", "expected_video_count", "brand", "source_precedence")},
         "summary": {"errors": len(rep.errors), "blockers": len(rep.blockers), "warnings": len(rep.warnings)},
         "global_issues": {k: [m for m in getattr(rep, k) if m.split(":")[0] in ("campaign", "brand")]
                           for k in ("errors", "blockers", "warnings")},
         "videos": videos,
         "providers": providers,
         "continuity": project.continuity,
+        "product_flow": project.product_flow,
+        "banned_phrases": project.campaign.get("banned_phrases", []),
     }
 
 
@@ -69,6 +71,13 @@ def make_handler(root: Path):
         def do_GET(self):  # noqa: N802
             if self.path in ("/", "/index.html"):
                 self._send(200, UI_FILE.read_bytes(), "text/html; charset=utf-8")
+            elif self.path == "/brand/logo":
+                project = Project.load(root)
+                logo = root / project.campaign.get("brand", {}).get("logo_path", "")
+                if logo.is_file():
+                    self._send(200, logo.read_bytes(), "image/png")
+                else:
+                    self._send(404, b"no logo", "text/plain")
             elif self.path == "/api/state":
                 data = build_state(Project.load(root))
                 self._send(200, json.dumps(data, ensure_ascii=False).encode(), "application/json; charset=utf-8")

@@ -24,12 +24,23 @@ CAMPAIGN = {
     "video_ids": ["DEMO1"],
     "output_targets": {"9x16": [180, 320], "16x9": [320, 180]},
     "fps": 24,
-    "brand": {"official_assets_present": False, "logo_path": "assets/brand/logo.png", "font_path": "assets/brand/font.ttf",
-              "colors": {"green": "#0F5132", "beige": "#EFE6D8", "muted_gold": "#C2A15A"}},
+    "brand": {"logo_supplied": False, "font_licensed": False, "green_system_decision": "pending",
+              "logo_path": "assets/brand/logo.png", "font_path": "assets/brand/font.ttf",
+              "cta_placeholder": "[الموقع الإلكتروني]",
+              "roles": {"primary": "#33650C", "accent": "#CBA401", "light": "#FAF6ED"}},
     "audio": {"loudness_target_lufs": -14.0, "true_peak_max_dbtp": -1.0, "forbidden_sfx": ["alert chime", "ribbon cutting"]},
     "vo_pacing": {"comfortable_words_per_second": 2.2, "max_words_per_second": 2.6, "tail_silence_s": 0.3},
     "claims_evidence": [],
+    "banned_phrases": [{"phrase": "تأكيد فوري", "use_instead": "طلب واحد.. ونرجع لك بعرض واحد"},
+                       {"phrase": "المكان موثق", "use_instead": "قاعات وشاليهات واستراحات شريكة"},
+                       {"phrase": "tabby", "use_instead": "SAMA-licensed providers"}],
+    "forbidden_ui_features": ["invoice", "فاتورة"],
+    "required_disclosures": [{"id": "DSC_FLEX_PAY", "trigger_regex": "(دفع مرن|تمويل)",
+                              "must_include": ["جهات تمويل مرخصة من ساما", "لا تقدّم تمويلاً"],
+                              "approved_text": "fixture disclosure"}],
+    "product_flow_path": "plans/product_flow.json",
 }
+FLOW = {"verified_against_demo": False, "steps": [{"id": "STEP1_EVENT_TYPE", "order": 1}]}
 CONTINUITY = {
     "global_look": {"anchor_description": "FIXTURE LOOK warm daylight", "palette_tokens": ["#0F5132"]},
     "characters": [{"id": "CHAR_A", "defined": True, "anchor_description": "FIXTURE ANCHOR A, a man in his thirties",
@@ -70,7 +81,7 @@ VERIFIED_SPEC = {
 }
 
 
-def write_project(root: Path, video=None, campaign=None, continuity=None) -> Project:
+def write_project(root: Path, video=None, campaign=None, continuity=None, flow=None) -> Project:
     (root / "plans" / "videos").mkdir(parents=True, exist_ok=True)
     for d in ("config", "state", "assets/clips", "assets/audio", "assets/brand", "source"):
         (root / d).mkdir(parents=True, exist_ok=True)
@@ -80,6 +91,7 @@ def write_project(root: Path, video=None, campaign=None, continuity=None) -> Pro
     (root / "plans" / "campaign.json").write_text(json.dumps(c, ensure_ascii=False))
     (root / "plans" / "continuity.json").write_text(json.dumps(continuity or CONTINUITY, ensure_ascii=False))
     (root / "plans" / "videos" / f"{v['id']}.json").write_text(json.dumps(v, ensure_ascii=False))
+    (root / "plans" / "product_flow.json").write_text(json.dumps(flow or FLOW, ensure_ascii=False))
     shutil.copy(REPO / "config" / "pricing.json", root / "config" / "pricing.json")
     providers = json.loads((REPO / "config" / "providers.json").read_text())
     providers["providers"]["fixture"] = copy.deepcopy(VERIFIED_SPEC)

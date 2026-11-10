@@ -12,5 +12,15 @@
     "9x16",
     "16x9"
   ],
-  "shots": []
+  "shots": [],
+  "mandatory_corrections": [
+    {
+      "replace": "«كيف نوثّق المكان»",
+      "with": "كيف يطلب العميل مناسبته؟ (6 خطوات) — screen recording of the real request flow",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md"
+    }
+  ]
 }

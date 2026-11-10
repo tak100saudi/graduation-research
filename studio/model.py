@@ -51,6 +51,14 @@ def to_ms(seconds: float | int | None) -> int | None:
     return int(round(float(seconds) * 1000))
 
 
+ALEF_RE = re.compile(r"[أإآٱ]")
+
+
+def normalize(text: str) -> str:
+    """For phrase matching: drop diacritics/tatweel, unify alef forms, lowercase."""
+    return re.sub(r"\s+", " ", ALEF_RE.sub("ا", ARABIC_DIACRITICS.sub("", text or ""))).strip().lower()
+
+
 def count_words(text: str) -> int:
     return len(WORD_RE.findall(ARABIC_DIACRITICS.sub("", text or "")))
 
@@ -73,6 +81,7 @@ class Project:
     campaign: dict
     continuity: dict
     videos: dict[str, dict]
+    product_flow: dict = field(default_factory=dict)
 
     @classmethod
     def load(cls, root: Path | str = ROOT) -> "Project":
@@ -83,7 +92,9 @@ class Project:
         for p in sorted((root / "plans" / "videos").glob("*.json")):
             v = load_json(p)
             videos[v.get("id", p.stem)] = v
-        return cls(root, campaign, continuity, videos)
+        flow_path = root / campaign.get("product_flow_path", "plans/product_flow.json")
+        flow = load_json(flow_path) if flow_path.exists() else {}
+        return cls(root, campaign, continuity, videos, flow)
 
     def characters(self) -> dict[str, dict]:
         return {c["id"]: c for c in self.continuity.get("characters", [])}
@@ -132,9 +143,22 @@ def scan_claims(text: str) -> list[str]:
 
 
 def shot_texts(shot: dict) -> list[str]:
-    out = [shot.get("vo_ar", "")]
+    """Customer-facing words: VO and on-screen text."""
+    out = [shot.get("vo_ar", ""), shot.get("subtitle_ar", "")]
     out += [o.get("text", "") for o in shot.get("overlay_ar", [])]
     return [t for t in out if t]
+
+
+def shot_all_texts(shot: dict) -> list[str]:
+    """Everything that ends up on screen or in a prompt."""
+    out = shot_texts(shot) + [shot.get("action", ""), shot.get("sfx", ""), shot.get("ui_notes", ""),
+                              shot.get("lighting", "")]
+    return [t for t in out if t]
+
+
+def banned_hits(project: "Project", text: str) -> list[dict]:
+    n = normalize(text)
+    return [b for b in project.campaign.get("banned_phrases", []) if normalize(b["phrase"]) in n]
 
 
 def validate_video(project: Project, video: dict) -> Report:
@@ -266,6 +290,28 @@ def validate_video(project: Project, video: dict) -> Report:
             if not ov.get("text"):
                 r.errors.append(f"{sid}: overlay {j} has no text")
 
+        # Owner corrections: banned phrases anywhere in copy or prompts
+        for text in shot_all_texts(shot):
+            for b in banned_hits(project, text):
+                r.errors.append(f"{sid}: banned phrase “{b['phrase']}” — use “{b['use_instead']}” (brand_facts.md)")
+        ui_text = normalize(" ".join([shot.get("action", ""), shot.get("ui_notes", "")] +
+                                     [o.get("text", "") for o in shot.get("overlay_ar", [])]))
+        for feat in project.campaign.get("forbidden_ui_features", []):
+            if normalize(feat) in ui_text:
+                r.errors.append(f"{sid}: shows '{feat}', which the real product does not have")
+        if mode == "screen_recording":
+            flow = project.product_flow
+            steps = {st["id"] for st in flow.get("steps", [])}
+            step = shot.get("generation", {}).get("flow_step")
+            if step not in steps:
+                r.errors.append(f"{sid}: screen recording must name generation.flow_step from plans/product_flow.json")
+            if not flow.get("verified_against_demo"):
+                r.blockers.append(f"{sid}: request flow not yet verified on the live demo site")
+        for ov in shot.get("overlay_ar", []):
+            cta = project.campaign.get("brand", {}).get("cta_placeholder")
+            if cta and cta in ov.get("text", ""):
+                r.blockers.append(f"{sid}: CTA is still the placeholder {cta} — owner must supply the final URL")
+
         # Claim guard
         for text in shot_texts(shot):
             hits = scan_claims(text)
@@ -282,6 +328,16 @@ def validate_video(project: Project, video: dict) -> Report:
         for bad in project.campaign.get("audio", {}).get("forbidden_sfx", []):
             if bad in sfx:
                 r.errors.append(f"{sid}: forbidden SFX '{bad}'")
+
+    # Mandatory disclosures (e.g. flexible payment)
+    all_copy = " ".join(t for s in shots for t in shot_texts(s))
+    overlay_copy = normalize(" ".join(o.get("text", "") for s in shots for o in s.get("overlay_ar", [])))
+    for d in project.campaign.get("required_disclosures", []):
+        if re.search(d["trigger_regex"], all_copy, flags=re.IGNORECASE):
+            missing = [m for m in d["must_include"] if normalize(m) not in overlay_copy]
+            if missing:
+                r.errors.append(f"{vid}: mentions {d['id']} but on-screen disclosure lacks: {' | '.join(missing)}. "
+                                f"Approved text: {d['approved_text']}")
 
     if dur_ms is not None and cursor != dur_ms:
         r.errors.append(f"{vid}: shots total {cursor/1000:.3f}s but video duration is {dur_ms/1000:.3f}s")
@@ -307,8 +363,17 @@ def validate_project(project: Project) -> Report:
     if not src.exists():
         r.blockers.append(f"campaign: source document not found at {src.relative_to(project.root)}")
     brand = c.get("brand", {})
-    if not brand.get("official_assets_present"):
-        r.blockers.append("brand: official Season Venue logo/font not supplied — using suggested palette only")
+    if not brand.get("logo_supplied"):
+        r.blockers.append("brand: official Season Venue logo not supplied")
+    for key in ("logo_path", "logo_dark_bg_path"):
+        if brand.get("logo_supplied") and brand.get(key) and not (project.root / brand[key]).is_file():
+            r.errors.append(f"brand: {key} points to a missing file {brand[key]}")
+    if not brand.get("font_licensed"):
+        r.blockers.append("brand: licensed brand font (29LT Bukra) not supplied — overlay renders stay DRAFT")
+    if brand.get("green_system_decision", "pending") == "pending":
+        r.blockers.append("brand: owner must choose the green system (#33650C olive vs #005731 deep green)")
+    if project.product_flow and not project.product_flow.get("verified_against_demo"):
+        r.blockers.append("campaign: request flow (plans/product_flow.json) not verified on the demo site")
     for vid in ids:
         if vid in project.videos:
             r.extend(validate_video(project, project.videos[vid]))
