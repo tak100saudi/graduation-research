@@ -1,0 +1,42 @@
+{
+  "_doc": "Continuity bible. Every anchor_description is injected VERBATIM into every prompt that references the id, so wording must stay frozen once approved. Generative shots that show a character require consented reference images (consent.status == 'signed') before generation is allowed.",
+  "global_look": {
+    "anchor_description": "contemporary Saudi Arabia, authentic and respectful cultural detail, natural warm daylight palette leaning to deep green, warm beige and muted gold accents, premium but understated, photorealistic cinematic commercial",
+    "grade": {"lut_path": "", "notes": "Warm neutral highlights, gentle contrast, no teal-orange push."},
+    "palette_tokens": ["#0F5132", "#EFE6D8", "#C2A15A"],
+    "aspect_framing_rule": "Compose with a centre-safe area so 9:16 and 16:9 can both be generated natively; keep faces and key action inside the central 56% width."
+  },
+  "characters": [
+    {
+      "id": "CHAR_PENDING_1",
+      "defined": false,
+      "role": "",
+      "anchor_description": "",
+      "wardrobe": {},
+      "reference_images": [],
+      "consent": {"status": "missing", "record_path": "", "talent_name": ""},
+      "seed": null
+    }
+  ],
+  "locations": [
+    {
+      "id": "LOC_PENDING_1",
+      "defined": false,
+      "anchor_description": "",
+      "time_of_day": "",
+      "reference_images": [],
+      "licence": {"status": "missing", "record_path": ""}
+    }
+  ],
+  "negative_prompt_global": [
+    "any on-screen text, letters, captions, subtitles or Arabic script",
+    "logos, brand marks, watermarks",
+    "app screens, phone UI, website UI, dashboards",
+    "price tags, currency symbols, numbers",
+    "distorted hands, extra fingers, warped faces, uncanny eyes",
+    "identity drift, changing face or wardrobe between shots",
+    "ribbon cutting, scissors, alarm or notification visuals",
+    "alcohol, immodest clothing, culturally inaccurate dress",
+    "low resolution, flicker, jitter, morphing, cartoon look"
+  ]
+}

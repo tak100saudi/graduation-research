@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+assets/clips/*.mp4
+assets/audio/*.wav
+assets/screen_recordings/*
+!assets/screen_recordings/.gitkeep
+output/
+state/approvals.json
+state/jobs/

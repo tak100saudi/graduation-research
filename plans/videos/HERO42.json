@@ -1,0 +1,14 @@
+{
+  "id": "HERO42",
+  "kind": "hero",
+  "duration_s": 42,
+  "duration_source": "inferred_from_id",
+  "concept": "",
+  "source_ref": "",
+  "source_status": "pending_source",
+  "aspect_ratios": [
+    "9x16",
+    "16x9"
+  ],
+  "shots": []
+}

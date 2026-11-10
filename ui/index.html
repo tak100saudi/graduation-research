@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Season Venue Studio</title>
+<style>
+:root{--green:#0F5132;--beige:#EFE6D8;--gold:#C2A15A;--ink:#1d2320;--muted:#6b716d;--line:#d9d1c3;--bg:#f7f3ec;--card:#fff;
+--ok:#1f7a4d;--warn:#a86b00;--err:#b3261e;--pending:#8a8f8b}
+@media (prefers-color-scheme:dark){:root{--ink:#ece6da;--muted:#a8a296;--line:#3a3f3b;--bg:#141816;--card:#1d2220;--beige:#2a2f2b}}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI","Noto Sans Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--green);color:#EFE6D8;padding:14px 20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+header h1{margin:0;font-size:18px;font-weight:600}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:rgba(255,255,255,.14)}
+.wrap{display:grid;grid-template-columns:260px 1fr;gap:16px;padding:16px}
+@media (max-width:820px){.wrap{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.list button{display:flex;justify-content:space-between;width:100%;border:0;background:none;color:inherit;padding:8px;border-radius:8px;cursor:pointer;font:inherit;text-align:start}
+.list button:hover,.list button.on{background:var(--beige)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-inline-start:6px;background:var(--pending)}
+.s-qc_passed,.s-approved{background:var(--ok)}.s-generated,.s-test_generated{background:var(--gold)}.s-rejected{background:var(--err)}
+.s-prompt_ready,.s-scripted{background:#4a7fb0}
+.issues li{margin:2px 0}.e{color:var(--err)}.b{color:var(--warn)}.w{color:var(--muted)}
+.timeline{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line);direction:ltr;margin:10px 0}
+.timeline div{border-inline-end:1px solid var(--card);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;min-width:0;overflow:hidden;white-space:nowrap}
+table{width:100%;border-collapse:collapse}th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:start}
+th{font-weight:600;color:var(--muted);font-size:12px}
+code,.en{direction:ltr;unicode-bidi:isolate;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+details summary{cursor:pointer;color:var(--muted)}
+.prompt{white-space:pre-wrap;direction:ltr;text-align:left;background:var(--bg);padding:8px;border-radius:6px;font-size:12px}
+.btn{border:1px solid var(--line);background:var(--card);color:inherit;border-radius:6px;padding:3px 8px;cursor:pointer;font:inherit;font-size:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.empty{color:var(--muted);padding:24px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>Season Venue — استوديو الإنتاج</h1>
+  <span class="pill" id="sum"></span>
+  <span class="pill" id="src"></span>
+  <span class="pill" id="prov"></span>
+</header>
+<div class="wrap">
+  <aside class="card list" id="videos"></aside>
+  <main id="detail"><div class="card empty">جارٍ التحميل…</div></main>
+</div>
+<script>
+const $=s=>document.querySelector(s);let S=null,cur=null;
+const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const statusLabel={pending_source:'بانتظار المصدر',scripted:'مكتوب',prompt_ready:'البرومبت جاهز',test_generated:'لقطة اختبار',generated:'مولّد',approved:'معتمد',qc_passed:'اجتاز الجودة',rejected:'مرفوض'};
+async function load(){S=await (await fetch('/api/state')).json();render()}
+function vStatus(v){if(!v.shots.length)return 'pending_source';const o=['rejected','pending_source','scripted','prompt_ready','test_generated','generated','approved','qc_passed'];return v.shots.map(s=>s.status).sort((a,b)=>o.indexOf(a)-o.indexOf(b))[0]}
+function render(){
+  $('#sum').textContent=`أخطاء ${S.summary.errors} · عوائق ${S.summary.blockers} · تنبيهات ${S.summary.warnings}`;
+  $('#src').textContent='المصدر: '+(S.campaign.source_status==='missing'?'PDF غير موجود':S.campaign.source_status);
+  const ready=S.providers.filter(p=>p.ready).map(p=>p.provider);
+  $('#prov').textContent='مزوّد الفيديو: '+(ready.length?ready.join(', '):'غير مفعّل');
+  $('#videos').innerHTML=S.videos.map(v=>`<button class="${v.id===cur?'on':''}" data-id="${v.id}"><span><span class="dot s-${vStatus(v)}"></span><code>${esc(v.id)}</code></span><span class="w">${v.duration_s??'?'}ث · ${v.shots.length} لقطة</span></button>`).join('');
+  document.querySelectorAll('#videos button').forEach(b=>b.onclick=()=>{cur=b.dataset.id;render()});
+  if(!cur){showOverview();return}
+  showVideo(S.videos.find(v=>v.id===cur));
+}
+function issues(i){const li=(a,c)=>a.map(m=>`<li class="${c}">${esc(m)}</li>`).join('');const h=li(i.errors,'e')+li(i.blockers,'b')+li(i.warnings,'w');return h?`<ul class="issues">${h}</ul>`:'<p class="w">لا توجد ملاحظات</p>'}
+function showOverview(){
+  const p=S.providers.map(p=>`<div class="card"><b class="en">${p.provider}</b> ${p.ready?'✅':'⛔'}<ul class="issues">${p.problems.map(x=>`<li class="b en">${esc(x)}</li>`).join('')}</ul></div>`).join('');
+  const chars=S.continuity.characters.map(c=>`<li><code>${esc(c.id)}</code> — ${c.defined?esc(c.anchor_description):'<span class="b">غير معرّف</span>'} · الموافقة: ${esc(c.consent.status)}</li>`).join('');
+  const locs=S.continuity.locations.map(c=>`<li><code>${esc(c.id)}</code> — ${c.defined?esc(c.anchor_description):'<span class="b">غير معرّف</span>'}</li>`).join('');
+  $('#detail').innerHTML=`<div class="card"><h3>الحملة</h3><p>${esc(S.campaign.source_note||'')}</p>${issues(S.global_issues)}</div>
+  <h3>مزودو الفيديو</h3><div class="grid3">${p}</div>
+  <div class="card" style="margin-top:12px"><h3>ثبات الشخصيات والمواقع</h3><b>الشخصيات</b><ul>${chars}</ul><b>المواقع</b><ul>${locs}</ul>
+  <b>الألوان</b> ${S.continuity.global_look.palette_tokens.map(c=>`<span class="pill" style="background:${c};color:#fff">${c}</span>`).join(' ')}</div>`;
+}
+function showVideo(v){
+  const total=v.duration_s||v.shots.reduce((a,s)=>Math.max(a,s.end_s),0)||1;
+  const colors=['#0F5132','#2d6b4c','#C2A15A','#7a6a44','#3d5a6c'];
+  const tl=v.shots.length?`<div class="timeline">${v.shots.map((s,i)=>`<div title="${s.id} ${s.start_s}-${s.end_s}s" style="flex:${s.duration_s};background:${colors[i%colors.length]}">${s.id.split('_').pop()} · ${s.duration_s}s</div>`).join('')}</div>`:'';
+  const rows=v.shots.map(s=>`<tr>
+    <td><code>${s.id}</code><br><span class="w en">${s.start_s}–${s.end_s}s (${s.duration_s}s)</span></td>
+    <td><span class="dot s-${s.status}"></span>${statusLabel[s.status]||s.status}<br><span class="w en">${esc(s.mode)}</span></td>
+    <td>${Object.entries(s.assets).map(([r,ok])=>`<span class="en">${r}</span> ${ok?'✅':'—'}`).join('<br>')}</td>
+    <td>${esc(s.vo_ar)||'<span class="w">—</span>'}${s.overlays_ar.length?'<br><b>نص:</b> '+s.overlays_ar.map(o=>esc(o.text)).join(' | '):''}</td>
+    <td><details><summary>Prompt</summary><div class="prompt">${esc(s.prompt_en)}\n\nNEGATIVE: ${esc(s.negative_prompt)}</div></details>
+      <button class="btn" data-a="approved" data-s="${s.id}">اعتماد</button> <button class="btn" data-a="rejected" data-s="${s.id}">رفض</button>
+      ${s.review?`<div class="w">${esc(s.review.decision)} ${esc(s.review.note)}</div>`:''}</td></tr>`).join('');
+  $('#detail').innerHTML=`<div class="card"><h2 class="en" style="margin:0">${v.id}</h2>
+    <p>${esc(v.concept)||'<span class="b">المفهوم غير مكتوب — بانتظار ملف الحملة</span>'}</p>
+    <p class="w">المدة: ${v.duration_s??'غير معروفة'}ث · المصدر: ${esc(v.source_status)} · الصوت: ${v.audio.voice?'✅':'—'} موسيقى: ${v.audio.music?'✅':'—'} · المقاسات: <span class="en">${v.aspect_ratios.join(', ')}</span></p>
+    ${tl}${issues(v.issues)}</div>
+    <div class="card" style="margin-top:12px">${v.shots.length?`<table><thead><tr><th>اللقطة</th><th>الحالة</th><th>الملفات</th><th>التعليق الصوتي / النصوص</th><th>البرومبت والمراجعة</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty">لا توجد لقطات بعد</div>'}</div>`;
+  document.querySelectorAll('[data-a]').forEach(b=>b.onclick=async()=>{const note=prompt('ملاحظة (اختياري)')||'';
+    const r=await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({shot_id:b.dataset.s,decision:b.dataset.a,note})});
+    if(!r.ok)alert((await r.json()).error);await load()});
+}
+load();
+</script>
+</body>
+</html>

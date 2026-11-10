@@ -1,0 +1,10 @@
+{
+  "_doc": "Copy prices ONLY from the provider's official pricing page. Leave null until verified. Cost estimation refuses to run with a null rate.",
+  "currency": "USD",
+  "retake_factor": 0.5,
+  "rates": {
+    "veo":    {"usd_per_second": null, "source_url": "", "checked_on": ""},
+    "runway": {"usd_per_second": null, "source_url": "", "checked_on": ""},
+    "kling":  {"usd_per_second": null, "source_url": "", "checked_on": ""}
+  }
+}

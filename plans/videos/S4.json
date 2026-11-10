@@ -1,0 +1,16 @@
+{
+  "id": "S4",
+  "kind": "performance",
+  "family": "S",
+  "family_note": "S-series performance concept",
+  "duration_s": null,
+  "duration_source": "pending_source",
+  "concept": "",
+  "source_ref": "",
+  "source_status": "pending_source",
+  "aspect_ratios": [
+    "9x16",
+    "16x9"
+  ],
+  "shots": []
+}
