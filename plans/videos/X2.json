@@ -1,0 +1,39 @@
+{
+  "id": "X2",
+  "kind": "performance",
+  "family": "X",
+  "platform": "X",
+  "title_ar": "«5 علامات إن الحجز فيه مشكلة»",
+  "tone": "تنظيم",
+  "duration_s": 20,
+  "duration_source": "source_campaign.pdf p16",
+  "fps": 30,
+  "aspect_ratios": [
+    "16x9",
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p16",
+  "source_status": "pending_script",
+  "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
+  "subtitles": true,
+  "mandatory_corrections": [
+    {
+      "replace": "«موثّق / أماكن موثّقة» وشارة موثّق",
+      "with": "قاعات وشاليهات واستراحات شريكة",
+      "claims": [
+        "CLM_PARTNER_VENUES"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
+  ],
+  "shots": []
+}

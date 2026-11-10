@@ -1,0 +1,83 @@
+{
+  "_doc": "The ONLY product UI that may appear in ads: authentic screen recordings of this request flow. Steps come from the owner's partners deck p6-7 and brand_facts.md. They must be confirmed on the live demo before any UI shot is recorded or scripted.",
+  "demo_url": "https://demo.wady.sa/Season-VENUE/",
+  "verified_against_demo": false,
+  "verification_log": [
+    {
+      "date": "2026-11-10",
+      "result": "HTTP 404 Not Found from demo.wady.sa (server-side) for /Season-VENUE/ ; site root returns an empty page. Flow NOT verified."
+    }
+  ],
+  "steps": [
+    {
+      "id": "STEP1_EVENT_TYPE",
+      "order": 1,
+      "label_ar": "نوع المناسبة",
+      "options_ar": [
+        "الزواج",
+        "الخطوبة",
+        "الملكة",
+        "أعياد الميلاد",
+        "التخرج",
+        "العشاء الخاص",
+        "فعاليات الشركات",
+        "التجمعات الرمضانية",
+        "أخرى"
+      ],
+      "source": "deck p4, p6"
+    },
+    {
+      "id": "STEP2_CITY_DATE",
+      "order": 2,
+      "label_ar": "المدينة والتاريخ التقريبي",
+      "source": "deck p6"
+    },
+    {
+      "id": "STEP3_GUESTS_BUDGET_ATTENDANCE",
+      "order": 3,
+      "label_ar": "عدد الضيوف والميزانية ونوع الحضور",
+      "options_ar": [
+        "رجال",
+        "نساء",
+        "الجميع"
+      ],
+      "source": "deck p6"
+    },
+    {
+      "id": "STEP4_SERVICES",
+      "order": 4,
+      "label_ar": "الخدمات المطلوبة",
+      "options_ar": [
+        "قاعة",
+        "ضيافة",
+        "ترفيه",
+        "تصوير وفيديو",
+        "ديكور وورد",
+        "إضاءة ومسرح",
+        "جناح عروس",
+        "إضافات القاعة"
+      ],
+      "source": "deck p6"
+    },
+    {
+      "id": "STEP5_CONTACT",
+      "order": 5,
+      "label_ar": "الاسم ورقم الجوال وأي تفاصيل إضافية",
+      "source": "deck p6",
+      "privacy": "Use a test/staff name and number only; never record a real customer's data."
+    },
+    {
+      "id": "STEP6_REVIEW_SUBMIT",
+      "order": 6,
+      "label_ar": "مراجعة الطلب وإرساله (مع إمكانية الرجوع بدون فقد الاختيارات)",
+      "source": "deck p6"
+    },
+    {
+      "id": "CONFIRMATION",
+      "order": 7,
+      "label_ar": "تأكيد استلام الطلب",
+      "note": "After this the team reviews and contacts the customer. No instant booking, no prices on screen.",
+      "source": "deck p7; brand_facts.md"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name_en": "Season Venue",
+  "name_ar": "سيزون فينيو",
+  "official_tagline": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+  "launch_line": "الرياض أولاً · قريباً",
+  "logo": {
+    "primary": "brand/logo_transparent.png",
+    "dark_bg": "brand/logo_transparent_for_dark_bg.png",
+    "original": "brand/logo_original_white_bg.png",
+    "note": "Use as-is. Do not redraw, recolor, or regenerate the logo with AI."
+  },
+  "colors": {
+    "logo_gold": "#CBA401",
+    "logo_green": "#33650C",
+    "deck_green_bg": "#33630E",
+    "deck_gold_text": "#E0B95C",
+    "poster_deep_green": "#005731",
+    "poster_green_accent": "#00814B",
+    "poster_cream_bg": "#FAF6ED",
+    "note": "Two green systems exist: logo/partners deck use olive green #33650C, posters use deep green #005731. Owner must pick one before final renders. Until then use logo green #33650C with logo gold #CBA401."
+  },
+  "fonts": {
+    "arabic_brand": "29LT Bukra Wide (Regular/Bold) — used in partners deck. Commercial font from 29LT: do NOT embed or download unless the owner supplies licensed .ttf/.otf files.",
+    "fallback_until_licensed": "Any open Arabic font the owner approves (e.g. Tajawal, IBM Plex Sans Arabic) — mark renders as draft."
+  },
+  "links": {
+    "demo_site": "https://demo.wady.sa/Season-VENUE/",
+    "note": "Demo/staging site of the real platform. Use it to confirm the actual request flow and record real screen captures. Not the final public URL."
+  }
+}

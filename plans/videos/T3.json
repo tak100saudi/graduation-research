@@ -1,0 +1,44 @@
+{
+  "id": "T3",
+  "kind": "performance",
+  "family": "T",
+  "platform": "TikTok",
+  "title_ar": "«توقّع الصورة ولا الواقع؟»",
+  "tone": "تنظيم",
+  "duration_s": 15,
+  "duration_source": "source_campaign.pdf p10",
+  "fps": 30,
+  "aspect_ratios": [
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p10",
+  "source_status": "pending_script",
+  "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
+  "subtitles": true,
+  "mandatory_corrections": [
+    {
+      "replace": "«موثّق / أماكن موثّقة» وشارة موثّق",
+      "with": "قاعات وشاليهات واستراحات شريكة",
+      "claims": [
+        "CLM_PARTNER_VENUES"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Real verified venue filmed with owner consent",
+      "with": "postponed — no announced verification process",
+      "claims": [],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
+  ],
+  "shots": []
+}
