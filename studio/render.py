@@ -42,7 +42,7 @@ def overlay_events(video: dict) -> list[dict]:
     events = []
     for shot in video.get("shots", []):
         for ov in shot.get("overlay_ar", []):
-            events.append({"shot_id": shot["id"], "kind": "overlay", **ov})
+            events.append({"shot_id": shot["id"], **ov, "kind": "overlay", "kind_detail": ov.get("kind", "")})
         if shot.get("vo_ar") and video.get("subtitles", True) and shot.get("subtitles", True):
             events.append({"shot_id": shot["id"], "kind": "subtitle",
                            "text": shot.get("subtitle_ar", shot["vo_ar"]),
@@ -78,11 +78,14 @@ def write_ass(project: Project, video: dict, ratio: str, dest: Path, font_name: 
         f"Style: body,{font_name},{base},{_ass_color(light)},{_ass_color(primary)},&H64000000,0,2,80,80,{bottom + int(h*0.08)},1,2,0,178",
         f"Style: subtitle,{font_name},{int(base*0.9)},&H00FFFFFF,&H00000000,&H80000000,0,2,80,80,{bottom},3,1,0,178",
         f"Style: cta,{font_name},{int(base*1.2)},{_ass_color(accent)},{_ass_color(primary)},&H64000000,1,2,80,80,{bottom},1,2,0,178",
+        f"Style: small,{font_name},{int(base*0.82)},{_ass_color(light)},&H00000000,&H64000000,0,2,90,90,{bottom},1,1,0,178",
         "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
     ]
     for ev in overlay_events(video):
         style = ev.get("style", "body")
-        if style not in ("headline", "body", "subtitle", "cta"):
+        if ev.get("kind_detail") == "disclosure" or ev.get("style") == "small":
+            style = "small"
+        if style not in ("headline", "body", "subtitle", "cta", "small"):
             style = "body"
         align = ASS_ALIGN.get(ev.get("position", "lower_third"), 2)
         text = ev["text"].replace("\n", "\\N")

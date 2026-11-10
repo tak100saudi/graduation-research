@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REC = "assets/screen_recordings/request_flow_9x16.mp4"
 COLD = "cool flat daylight, desaturated cool grade"
 WARM = "warm golden light, olive green, sand beige and calm gold palette"
-TAG = "طلب واحد.. عرض واحد.. مناسبة أسهل"
+TAG = "طلب واحد.. عرض واحد..\nمناسبة أسهل"
 BRAND_VO = "سيزون فينيو… قريبًا."
 
 
@@ -536,7 +536,7 @@ v.shot(3, 10, "flexible payment, optional", "replaces 3–10", characters=["C1"]
        action="He reads the printed offer calmly with a pen in hand, then nods, the document text is soft and unreadable",
        camera={"shot_size": "MCU", "lens_mm": 50, "movement": "slow push-in"}, lighting="light warming gradually",
        vo=("تقدر تقدّم على دفع مرن، اختياري… عبر جهات تمويل مرخصة من ساما.", 3.3, 9.6),
-       overlay_ar=[ov("دفع مرن · اختياري", 3.5, 9.8), ov(DISC, 3.5, 12.0, "bottom", "body", kind="disclosure")],
+       overlay_ar=[ov("دفع مرن · اختياري", 3.5, 9.8, "center"), ov(DISC, 3.5, 12.0, "bottom", "body", kind="disclosure")],
        claims=["CLM_FLEX_PAY"], negative_extra=["bank logos", "payment-provider logos", "readable numbers", "card terminal"])
 v.shot(10, 12, "relief", "Y5-B", characters=["C1"], location="L1",
        action="He smiles with relief and sets his phone down on a wooden table, the screen is not visible",
