@@ -12,9 +12,9 @@
     "16x9",
     "9x16"
   ],
-  "concept": "",
+  "concept": "لملاك القاعات والاستراحات: من مكالمات لا تنتهي بحجز إلى عملاء جدد بلا تكلفة تسويق.",
   "source_ref": "source_campaign.pdf p18",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -43,5 +43,207 @@
       "source": "brand_facts.md"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "X5_01",
+      "pdf_ref": "X5-A",
+      "start_s": 0,
+      "end_s": 4,
+      "beat": "hook · calls vs bookings",
+      "scene": "CHAOS",
+      "characters": [
+        "C4"
+      ],
+      "location": "L3",
+      "action": "He stands in the courtyard of his well-kept istiraha answering his phone with a tired expression, the screen is not visible",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "static"
+      },
+      "lighting": "late afternoon light",
+      "vo_ar": "لأصحاب الاستراحات… كم مكالمة اليوم؟ وكم حجز؟",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "one soft vibration, no ringtone",
+      "negative_extra": [
+        "smiling"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 3.8
+    },
+    {
+      "id": "X5_02",
+      "pdf_ref": "replaces 4–10",
+      "start_s": 4,
+      "end_s": 10,
+      "beat": "new customers, no marketing cost",
+      "scene": "SYSTEM",
+      "characters": [
+        "C4"
+      ],
+      "location": "L3",
+      "action": "He walks calmly through his tidy istiraha straightening the majlis cushions, content",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "slow gimbal follow"
+      },
+      "lighting": "warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "سيزون فينيو… عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات.",
+      "overlay_ar": [
+        {
+          "text": "عملاء جدد · بدون عمولة في فترة الإثبات",
+          "start_s": 4.5,
+          "end_s": 9.8,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "فترة الإثبات: ثلاثة أشهر أو عشرة حجوزات",
+          "start_s": 5.0,
+          "end_s": 9.8,
+          "position": "bottom",
+          "style": "body"
+        }
+      ],
+      "claims": [
+        "CLM_PARTNER_NEW_CLIENTS",
+        "CLM_PARTNER_TRIAL"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 4.2,
+      "vo_end_s": 9.8,
+      "subtitle_ar": "Season Venue… عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات."
+    },
+    {
+      "id": "X5_03",
+      "pdf_ref": "X5-B",
+      "start_s": 10,
+      "end_s": 15,
+      "beat": "your dates stay yours",
+      "scene": "SYSTEM",
+      "characters": [
+        "C4"
+      ],
+      "location": "L3",
+      "action": "He sits relaxed on the majlis cushions pouring himself Arabic coffee from a dallah with a content expression",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 50,
+        "movement": "slow arc"
+      },
+      "lighting": "warm golden light",
+      "vo_ar": "",
+      "overlay_ar": [
+        {
+          "text": "التواريخ بيدك: ما يثبت موعد إلا بتأكيدك",
+          "start_s": 10.4,
+          "end_s": 14.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PARTNER_DATES"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "X5_04",
+      "pdf_ref": "",
+      "start_s": 15,
+      "end_s": 18,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سجّل مكانك… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "انضم شريكًا · الرياض أولًا",
+          "start_s": 15.5,
+          "end_s": 18,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 15.9,
+          "end_s": 18,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_PARTNER_NO_EXCLUSIVITY"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 15.3,
+      "vo_end_s": 16.8,
+      "logo": {
+        "start_s": 15.2,
+        "end_s": 18,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "4–10",
+      "change": "«حجوزات مؤكدة ومدفوعة» + owner-calendar screen (feature not confirmed) → new customers with no marketing cost, no commission in the proof period (three months or ten bookings)"
+    },
+    {
+      "pdf_shot": "10–15",
+      "change": "added the approved line that dates are fixed only after the partner confirms"
+    },
+    {
+      "pdf_shot": "15–18",
+      "change": "«سجّل مكانك» kept without «مجانًا»; contact number → «قريبًا»"
+    }
+  ],
+  "tweet_ar": "لأصحاب القاعات والاستراحات: عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات (ثلاثة أشهر أو عشرة حجوزات). Season Venue — قريبًا."
 }

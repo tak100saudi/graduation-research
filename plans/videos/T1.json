@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "الجملة المؤلمة «كلّمني خاص» تتكرر ثم تُمسح: السعر والشروط تصلك مكتوبة قبل التأكيد.",
   "source_ref": "source_campaign.pdf p8",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -34,5 +34,233 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "T1_01",
+      "pdf_ref": "T1-A",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · three bubbles",
+      "scene": "CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He sits staring at his phone with a blank green screen, then exhales in mild exasperation",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 50,
+        "movement": "static with micro push-in"
+      },
+      "lighting": "cool flat daylight, desaturated cool grade",
+      "vo_ar": "«كلّمني خاص»… للمرة الثالثة.",
+      "overlay_ar": [
+        {
+          "text": "كلّمني خاص",
+          "start_s": 0.2,
+          "end_s": 2.9,
+          "position": "top",
+          "style": "body",
+          "kind": "chat_bubble"
+        },
+        {
+          "text": "كلّمني خاص",
+          "start_s": 0.8,
+          "end_s": 2.9,
+          "position": "center",
+          "style": "body",
+          "kind": "chat_bubble"
+        },
+        {
+          "text": "كلّمني خاص",
+          "start_s": 1.4,
+          "end_s": 2.9,
+          "position": "lower_third",
+          "style": "body",
+          "kind": "chat_bubble"
+        }
+      ],
+      "claims": [],
+      "sfx": "muffled voice-call tone, no bells",
+      "negative_extra": [
+        "smiling"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 2.8
+    },
+    {
+      "id": "T1_02",
+      "pdf_ref": "T1-B",
+      "start_s": 3,
+      "end_s": 6,
+      "beat": "wipe it away",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He swipes his index finger across the air in front of the camera with a confident half-smile, as if clearing something away",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 35,
+        "movement": "static"
+      },
+      "lighting": "warm light shifting in",
+      "vo_ar": "اللفّ والدوران على السعر؟ خلاص.",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "fast music beat",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.2,
+      "vo_end_s": 5.8,
+      "edit_graphics": [
+        {
+          "type": "bubbles wiped by the finger",
+          "note": "motion graphics"
+        }
+      ]
+    },
+    {
+      "id": "T1_03",
+      "pdf_ref": "T1-C",
+      "start_s": 6,
+      "end_s": 11,
+      "beat": "written price and terms",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "",
+      "action": "Close-up of his hand holding a smartphone with a blank green screen, thumb scrolling slowly, white thobe sleeve and silver wristwatch visible",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "static with slight natural hand motion",
+        "focus": "shallow depth of field"
+      },
+      "lighting": "warm golden light",
+      "vo_ar": "مع سيزون فينيو… سعر وشروط مكتوبة قبل ما تأكد.",
+      "overlay_ar": [
+        {
+          "text": "سعر وشروط مكتوبة قبل ما تأكد",
+          "start_s": 6.4,
+          "end_s": 10.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_WRITTEN_TERMS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 6.2,
+      "vo_end_s": 10.6,
+      "subtitle_ar": "مع Season Venue… سعر وشروط مكتوبة قبل ما تأكد.",
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Real recording of the request form only; test data, never a real customer's details."
+      }
+    },
+    {
+      "id": "T1_04",
+      "pdf_ref": "",
+      "start_s": 11,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "طلب واحد… ونرجع لك بعرض واحد.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 11.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 11.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 11.3,
+      "vo_end_s": 14.3,
+      "logo": {
+        "start_s": 11.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "6–11",
+      "change": "«السعر ظاهر على كل مكان» + venue page with its price → written price and terms; request-form recording"
+    },
+    {
+      "pdf_shot": "11–15",
+      "change": "«حمّل… وشف الأسعار» → one request, one offer; CTA «قريبًا»"
+    },
+    {
+      "pdf_shot": "3–6",
+      "change": "«الأسعار المخفية؟ خلاص» softened so it does not imply public prices"
+    }
+  ]
 }

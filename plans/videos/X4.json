@@ -3,7 +3,7 @@
   "kind": "performance",
   "family": "X",
   "platform": "X",
-  "title_ar": "«عزيمتك الجاية… بدون ولا مكالمة»",
+  "title_ar": "«عزيمتك الجاية… بطلب واحد»",
   "tone": "راحة",
   "duration_s": 15,
   "duration_source": "source_campaign.pdf p17",
@@ -12,9 +12,9 @@
     "16x9",
     "9x16"
   ],
-  "concept": "",
+  "concept": "تسجيل شاشة صادق بإيقاع هادئ يثبت السهولة: طلب واحد من أوله إلى إرساله.",
   "source_ref": "source_campaign.pdf p17",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -35,5 +35,172 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "X4_01",
+      "pdf_ref": "X4-A",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · stillness",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "",
+      "action": "Still top-down shot of a smartphone lying motionless on a walnut wooden table next to a small finjan of Arabic coffee and dates, blank green screen",
+      "camera": {
+        "shot_size": "INSERT",
+        "angle": "top-down",
+        "lens_mm": 50,
+        "movement": "very slow push-in"
+      },
+      "lighting": "warm calm afternoon light",
+      "vo_ar": "عزيمتك الجاية…",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد",
+          "start_s": 0.5,
+          "end_s": 2.9,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "text_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.6,
+      "vo_end_s": 2.4
+    },
+    {
+      "id": "X4_02",
+      "pdf_ref": "3–11",
+      "start_s": 3,
+      "end_s": 11,
+      "beat": "the whole request, honestly",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "",
+      "action": "Full real screen recording of the request form, sped up, composited over his hand holding the phone",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "اختر مناسبتك… حدّد ضيوفك وخدماتك… وأرسل. والباقي نرجع لك فيه بعرض واحد.",
+      "overlay_ar": [
+        {
+          "text": "اختر · حدّد · أرسل",
+          "start_s": 3.5,
+          "end_s": 10.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "screen_recording",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP2_CITY_DATE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE",
+          "STEP4_SERVICES",
+          "STEP5_CONTACT",
+          "STEP6_REVIEW_SUBMIT"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.3,
+      "vo_end_s": 10.6,
+      "shows_product_ui": true
+    },
+    {
+      "id": "X4_03",
+      "pdf_ref": "",
+      "start_s": 11,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 11.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 11.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 11.3,
+      "vo_end_s": 12.8,
+      "logo": {
+        "start_s": 11.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "title_pdf": "«عزيمتك الجاية… بدون ولا مكالمة»",
+  "reconciliation": [
+    {
+      "pdf_shot": "title",
+      "change": "«بدون ولا مكالمة» is banned: the team does contact the customer. New title «بطلب واحد»"
+    },
+    {
+      "pdf_shot": "0–3",
+      "change": "«مكالمات: 0» counter → «طلب واحد»"
+    },
+    {
+      "pdf_shot": "3–11",
+      "change": "«تصفّح، اختر، احجز» → the six real form steps, then the team returns with one offer"
+    },
+    {
+      "pdf_shot": "11–15",
+      "change": "«جرّبها» + link → «قريبًا»"
+    }
+  ],
+  "tweet_ar": "عزيمتك الجاية تبدأ بطلب واحد: مناسبتك، ضيوفك، خدماتك. ونرجع لك بعرض واحد. Season Venue — قريبًا."
 }

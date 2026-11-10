@@ -11,6 +11,7 @@
   render    --video ID --ratio R [--allow-silent] [--allow-reframe]
   burn      --video ID --ratio R [--draft]   burn Arabic overlay layer + official logo
   animatic  --video ID --ratio R         timing animatic: slates + Arabic overlay layer + logo cue (not footage)
+  graphics  (--video ID | --all)         render local motion graphics: green line + end-card background
   qc        --video ID --ratio R [--file PATH]
   serve     [--port 8765]               local dashboard
 """
@@ -132,8 +133,19 @@ def cmd_burn(a, project):
 
 def cmd_animatic(a, project):
     from studio import animatic
-    for ratio in a.ratio:
-        print(animatic.build(project, a.video, ratio).relative_to(ROOT))
+    ids = project.campaign["video_ids"] if a.video == "all" else [a.video]
+    for vid in ids:
+        for ratio in a.ratio or project.video(vid)["aspect_ratios"]:
+            print(animatic.build(project, vid, ratio).relative_to(ROOT))
+    return 0
+
+
+def cmd_graphics(a, project):
+    from studio import graphics
+    ids = project.campaign["video_ids"] if a.all else [a.video]
+    for vid in ids:
+        for p in graphics.build_for_video(project, vid):
+            print(p.relative_to(ROOT))
     return 0
 
 
@@ -179,13 +191,15 @@ def main(argv=None):
     q = sub.add_parser("qc"); q.add_argument("--video", required=True)
     q.add_argument("--ratio", nargs="+", choices=["9x16", "16x9"], required=True); q.add_argument("--file")
     an = sub.add_parser("animatic"); an.add_argument("--video", required=True)
-    an.add_argument("--ratio", nargs="+", choices=["9x16", "16x9"], required=True)
+    an.add_argument("--ratio", nargs="+", choices=["9x16", "16x9"])
+    gr = sub.add_parser("graphics"); gg = gr.add_mutually_exclusive_group(required=True)
+    gg.add_argument("--video"); gg.add_argument("--all", action="store_true")
     sv = sub.add_parser("serve"); sv.add_argument("--port", type=int, default=8765)
     a = ap.parse_args(argv)
     project = Project.load(ROOT)
     handler = {"validate": cmd_validate, "ingest": cmd_ingest, "storyboard": cmd_storyboard, "providers": cmd_providers,
                "estimate": lambda a, p: (cmd_estimate(a, p), 0)[1], "approve": cmd_approve, "generate": cmd_generate,
-               "render": cmd_render, "animatic": cmd_animatic, "burn": cmd_burn, "qc": cmd_qc, "serve": cmd_serve}[a.cmd]
+               "render": cmd_render, "animatic": cmd_animatic, "graphics": cmd_graphics, "burn": cmd_burn, "qc": cmd_qc, "serve": cmd_serve}[a.cmd]
     try:
         return handler(a, project) or 0
     except (ProviderError, cost.CostError, generate.GenerationBlocked, render.RenderError, qc.QCError,

@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "لحظة عائلية دافئة: سؤال الأم «حجزت ولا لا؟» يُجاب بتأكيد استلام الطلب، والفريق يكمل.",
   "source_ref": "source_campaign.pdf p11",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -32,5 +32,200 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "T4_01",
+      "pdf_ref": "T4-A",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · mum asks",
+      "scene": "SYSTEM",
+      "characters": [
+        "C2",
+        "C1"
+      ],
+      "location": "L1",
+      "action": "She walks into the majlis and asks a question with a gentle, slightly worried look; he looks up from his phone",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "static"
+      },
+      "lighting": "soft afternoon light",
+      "vo_ar": "فيصل، حجزت ولا لا؟",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 2.6,
+      "vo_speaker": "C2 (recorded dialogue)"
+    },
+    {
+      "id": "T4_02",
+      "pdf_ref": "T4-B",
+      "start_s": 3,
+      "end_s": 7,
+      "beat": "he shows the confirmation",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He turns his phone toward her with a reassuring smile, the phone shows a blank green screen",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 50,
+        "movement": "slow push-in"
+      },
+      "lighting": "warm light",
+      "vo_ar": "أرسلت الطلب يمّه… وهذا تأكيد الاستلام.",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.3,
+      "vo_end_s": 6.7,
+      "vo_speaker": "C1 (recorded dialogue)",
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "CONFIRMATION"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Real recording of the request form only; test data, never a real customer's details."
+      }
+    },
+    {
+      "id": "T4_03",
+      "pdf_ref": "T4-C",
+      "start_s": 7,
+      "end_s": 12,
+      "beat": "relief",
+      "scene": "SYSTEM",
+      "characters": [
+        "C2",
+        "C1"
+      ],
+      "location": "L1",
+      "action": "She smiles warmly and pats his shoulder, both relaxed",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 50,
+        "movement": "slow gentle arc"
+      },
+      "lighting": "warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "طلب واحد… والفريق يرجع لك بعرض واحد. وبال أهلك مرتاح.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد · عرض واحد",
+          "start_s": 7.4,
+          "end_s": 11.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "light oud",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 7.2,
+      "vo_end_s": 11.8
+    },
+    {
+      "id": "T4_04",
+      "pdf_ref": "",
+      "start_s": 12,
+      "end_s": 16,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 12.5,
+          "end_s": 16,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 12.9,
+          "end_s": 16,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 13.8,
+      "logo": {
+        "start_s": 12.2,
+        "end_s": 16,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "3–7",
+      "change": "«حجزت يمه، وهذا التأكيد» → request sent + receipt confirmation (the real screen after submitting)"
+    },
+    {
+      "pdf_shot": "7–12",
+      "change": "«تأكيد فوري» banned → one request, the team comes back with one offer"
+    },
+    {
+      "pdf_shot": "12–16",
+      "change": "«احجز… وارتاح» → tagline + «قريبًا»; reminder feature not mentioned"
+    }
+  ],
+  "audio_note": "Dialogue recorded by two Saudi voice actors; announcer only from 7s."
 }

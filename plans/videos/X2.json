@@ -12,9 +12,9 @@
     "16x9",
     "9x16"
   ],
-  "concept": "",
+  "concept": "قائمة توعية بالموشن جرافيك كاملة: خمس علامات على حجز فيه مشكلة، يشطبها الخط الأخضر.",
   "source_ref": "source_campaign.pdf p16",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -35,5 +35,357 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "X2_01",
+      "pdf_ref": "0–2",
+      "start_s": 0,
+      "end_s": 2,
+      "beat": "title",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: title card on a cream background with burnt-orange icons",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "خمس علامات… شفتها؟ وقف.",
+      "overlay_ar": [
+        {
+          "text": "خمس علامات إن الحجز فيه مشكلة",
+          "start_s": 0.2,
+          "end_s": 1.9,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "title_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 0.1,
+      "vo_end_s": 1.95
+    },
+    {
+      "id": "X2_02",
+      "pdf_ref": "2–14",
+      "start_s": 2.0,
+      "end_s": 4.4,
+      "beat": "warning card 1/5",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: a cream card with a simple burnt-orange icon slides in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "السعر ما ينقال إلا خاص.",
+      "overlay_ar": [
+        {
+          "text": "السعر ما ينقال إلا خاص",
+          "start_s": 2.1,
+          "end_s": 4.35,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "list_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 2.05,
+      "vo_end_s": 4.35
+    },
+    {
+      "id": "X2_03",
+      "pdf_ref": "2–14",
+      "start_s": 4.4,
+      "end_s": 6.8,
+      "beat": "warning card 2/5",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: a cream card with a simple burnt-orange icon slides in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "الصور ما فيها تفاصيل.",
+      "overlay_ar": [
+        {
+          "text": "الصور ما فيها تفاصيل",
+          "start_s": 4.5,
+          "end_s": 6.75,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "list_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 4.45,
+      "vo_end_s": 6.75
+    },
+    {
+      "id": "X2_04",
+      "pdf_ref": "2–14",
+      "start_s": 6.8,
+      "end_s": 9.2,
+      "beat": "warning card 3/5",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: a cream card with a simple burnt-orange icon slides in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "عربون لحساب شخصي.",
+      "overlay_ar": [
+        {
+          "text": "عربون لحساب شخصي",
+          "start_s": 6.9,
+          "end_s": 9.15,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "list_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 6.85,
+      "vo_end_s": 9.15
+    },
+    {
+      "id": "X2_05",
+      "pdf_ref": "2–14",
+      "start_s": 9.2,
+      "end_s": 11.6,
+      "beat": "warning card 4/5",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: a cream card with a simple burnt-orange icon slides in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "ما فيه تأكيد مكتوب.",
+      "overlay_ar": [
+        {
+          "text": "ما فيه تأكيد مكتوب",
+          "start_s": 9.3,
+          "end_s": 11.55,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "list_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 9.25,
+      "vo_end_s": 11.55
+    },
+    {
+      "id": "X2_06",
+      "pdf_ref": "2–14",
+      "start_s": 11.6,
+      "end_s": 14.0,
+      "beat": "warning card 5/5",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: a cream card with a simple burnt-orange icon slides in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "الضيافة تنسّقها لحالك.",
+      "overlay_ar": [
+        {
+          "text": "الضيافة تنسّقها لحالك",
+          "start_s": 11.7,
+          "end_s": 13.95,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "list_card"
+      },
+      "status": "scripted",
+      "vo_start_s": 11.65,
+      "vo_end_s": 13.95
+    },
+    {
+      "id": "X2_07",
+      "pdf_ref": "14–18",
+      "start_s": 14,
+      "end_s": 18,
+      "beat": "the green line strikes the list",
+      "scene": "TURN",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: the olive-green line strikes through the five cards and everything turns green",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "مع سيزون فينيو… عرض مكتوب، وعقد يثبت حجزك.",
+      "overlay_ar": [
+        {
+          "text": "عرض واحد مكتوب · عقد وعربون",
+          "start_s": 14.4,
+          "end_s": 17.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER",
+        "CLM_CONTRACT_DEPOSIT"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "green_line",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 14.2,
+      "vo_end_s": 17.9,
+      "subtitle_ar": "مع Season Venue… عرض مكتوب، وعقد يثبت حجزك."
+    },
+    {
+      "id": "X2_08",
+      "pdf_ref": "",
+      "start_s": 18,
+      "end_s": 20,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 18.5,
+          "end_s": 20,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 18.9,
+          "end_s": 20,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 18.3,
+      "vo_end_s": 19.6,
+      "logo": {
+        "start_s": 18.2,
+        "end_s": 20,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "0–2",
+      "change": "«5» written as «خمس»"
+    },
+    {
+      "pdf_shot": "14–18",
+      "change": "«قواعدنا تمنع هالشي» + [platform rules] → the approved facts only: one written offer, contract and deposit"
+    },
+    {
+      "pdf_shot": "18–20",
+      "change": "«اعرف قواعدنا» + link → «قريبًا»"
+    }
+  ],
+  "production_note": "No video generation: full motion graphics in campaign colours; cream cards, burnt-orange #C8553D icons, all green at 14s."
 }

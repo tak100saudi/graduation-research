@@ -26,7 +26,7 @@ def test_repo_plans_have_no_structural_errors_but_block_production():
 
 def test_no_placeholder_creative_content_is_presented_as_final():
     for v in Project.load(REPO).videos.values():
-        if v["source_status"] in ("pending_source", "unidentified", "pending_script"):
+        if v["source_status"] in ("pending_source", "unidentified", "pending_script"):  # none left once all are scripted
             assert v["shots"] == [] and v["concept"] == ""
 
 

@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "شاشة مقسومة أفقيًا: الطريقة القديمة في الأعلى، وSeason Venue في الأسفل، بنفس اللحظة.",
   "source_ref": "source_campaign.pdf p19",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
   "subtitles": false,
   "mandatory_corrections": [
@@ -34,5 +34,226 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "Y1_01",
+      "pdf_ref": "0–3",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · same gathering, two ways",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Split screen assembled in the edit: top he calls anxiously, bottom he calmly holds a phone with a blank green screen",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "نفس العزيمة… طريقتين.",
+      "overlay_ar": [
+        {
+          "text": "قبل / بعد",
+          "start_s": 0.3,
+          "end_s": 2.9,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.4,
+      "vo_end_s": 2.6,
+      "composite": {
+        "layout": "horizontal split: top = before (cold grade), bottom = after (warm grade), olive-green divider",
+        "plates": [
+          {
+            "clip": "Y1_A",
+            "seconds": 9,
+            "prompt_en": "A Saudi man in his early 30s with a short neat black beard, white thobe and red-and-white shemagh sitting on beige cushions in a Riyadh majlis, phone to his ear, glancing at his silver wristwatch impatiently, cool grey daylight, static camera, cinematic photorealistic (16:9, cropped to half-frame)"
+          },
+          {
+            "clip": "Y1_B",
+            "seconds": 6,
+            "prompt_en": "The same man at an elegant istiraha at dusk greeting Saudi male guests in white thobes with warm handshakes and smiles, warm lantern light, slow gimbal push, cinematic photorealistic (16:9, cropped to half-frame)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Y1_02",
+      "pdf_ref": "3–9",
+      "start_s": 3,
+      "end_s": 9,
+      "beat": "waiting vs requesting",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Split screen: top he waits for a reply and checks his watch; bottom a phone with a blank green screen carries the real request form",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "composite": {
+        "layout": "horizontal split: top = before (cold grade), bottom = after (warm grade), olive-green divider",
+        "plates": [
+          {
+            "clip": "Y1_A",
+            "seconds": 9,
+            "prompt_en": "A Saudi man in his early 30s with a short neat black beard, white thobe and red-and-white shemagh sitting on beige cushions in a Riyadh majlis, phone to his ear, glancing at his silver wristwatch impatiently, cool grey daylight, static camera, cinematic photorealistic (16:9, cropped to half-frame)"
+          },
+          {
+            "clip": "Y1_B",
+            "seconds": 6,
+            "prompt_en": "The same man at an elegant istiraha at dusk greeting Saudi male guests in white thobes with warm handshakes and smiles, warm lantern light, slow gimbal push, cinematic photorealistic (16:9, cropped to half-frame)"
+          }
+        ]
+      },
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE",
+          "STEP6_REVIEW_SUBMIT"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Real recording of the request form only; test data, never a real customer's details."
+      }
+    },
+    {
+      "id": "Y1_03",
+      "pdf_ref": "9–14",
+      "start_s": 9,
+      "end_s": 14,
+      "beat": "still calling vs hosting",
+      "scene": "EVENT",
+      "characters": [],
+      "location": "",
+      "action": "Split screen: top he is still on the phone; bottom he welcomes his guests at the istiraha",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "الفرق؟ طلب واحد… وبال مرتاح.",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 9.4,
+      "vo_end_s": 12.6,
+      "composite": {
+        "layout": "horizontal split: top = before (cold grade), bottom = after (warm grade), olive-green divider",
+        "plates": [
+          {
+            "clip": "Y1_A",
+            "seconds": 9,
+            "prompt_en": "A Saudi man in his early 30s with a short neat black beard, white thobe and red-and-white shemagh sitting on beige cushions in a Riyadh majlis, phone to his ear, glancing at his silver wristwatch impatiently, cool grey daylight, static camera, cinematic photorealistic (16:9, cropped to half-frame)"
+          },
+          {
+            "clip": "Y1_B",
+            "seconds": 6,
+            "prompt_en": "The same man at an elegant istiraha at dusk greeting Saudi male guests in white thobes with warm handshakes and smiles, warm lantern light, slow gimbal push, cinematic photorealistic (16:9, cropped to half-frame)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Y1_04",
+      "pdf_ref": "",
+      "start_s": 14,
+      "end_s": 18,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 14.5,
+          "end_s": 18,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 14.9,
+          "end_s": 18,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 14.3,
+      "vo_end_s": 15.8,
+      "logo": {
+        "start_s": 14.2,
+        "end_s": 18,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "3–9",
+      "change": "«اختيار وحجز» screen → request-form recording"
+    },
+    {
+      "pdf_shot": "9–14",
+      "change": "«الفرق؟ دقايق [المدة الفعلية]» → «طلب واحد»: no booking-time claim"
+    },
+    {
+      "pdf_shot": "14–18",
+      "change": "«احجز الآن» → «قريبًا»"
+    }
+  ],
+  "edit_notes": {
+    "loop": "the green card dissolves back into the split screen",
+    "grade": "cold top, warm bottom, olive divider"
+  }
 }

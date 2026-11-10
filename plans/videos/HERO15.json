@@ -10,9 +10,9 @@
     "9x16",
     "16x9"
   ],
-  "concept": "",
+  "concept": "رحلة فيصل مضغوطة في 15 ثانية: الجملة المؤلمة «كلّمني خاص» ثم طلب واحد وعرض واحد وليلة مرتّبة.",
   "source_ref": "source_campaign.pdf pp7-8",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "notes": "Same Faisal journey compressed; 9:16 primary. Reuse HERO42 shots where possible.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -49,5 +49,224 @@
       "source": "brand_facts.md"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "HERO15_01",
+      "pdf_ref": "1",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · last time",
+      "scene": "CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "Tight close-up, he looks up from his phone with a frustrated, unimpressed expression directly toward camera, the screen is not visible",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "quick subtle push-in"
+      },
+      "lighting": "cool flat daylight, desaturated cool grade",
+      "vo_ar": "آخر مرة تسمع: «كلّمني خاص».",
+      "overlay_ar": [
+        {
+          "text": "«كلّمني خاص»؟ خلاص.",
+          "start_s": 0.3,
+          "end_s": 2.9,
+          "position": "center",
+          "style": "headline",
+          "kind": "chat_bubble"
+        }
+      ],
+      "claims": [],
+      "sfx": "phone vibration in the first second",
+      "negative_extra": [
+        "smiling",
+        "empty frame at start",
+        "slow pacing"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 2.8
+    },
+    {
+      "id": "HERO15_02",
+      "pdf_ref": "2",
+      "start_s": 3,
+      "end_s": 8,
+      "beat": "one request",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "",
+      "action": "Close-up of his hand holding a smartphone with a blank green screen, thumb scrolling and tapping smoothly, white thobe sleeve and silver wristwatch visible",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "static with slight natural hand motion",
+        "focus": "shallow depth of field"
+      },
+      "lighting": "warm golden interior light, cinematic product-style shot",
+      "vo_ar": "مع سيزون فينيو… طلب واحد، ونرجع لك بعرض واحد.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد · عرض واحد",
+          "start_s": 3.4,
+          "end_s": 7.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.2,
+      "vo_end_s": 7.6,
+      "subtitle_ar": "مع Season Venue… طلب واحد، ونرجع لك بعرض واحد.",
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE",
+          "STEP4_SERVICES"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Real recording of the request form only; test data, never a real customer's details."
+      }
+    },
+    {
+      "id": "HERO15_03",
+      "pdf_ref": "3",
+      "start_s": 8,
+      "end_s": 12,
+      "beat": "payoff",
+      "scene": "EVENT",
+      "characters": [
+        "C1",
+        "C5"
+      ],
+      "location": "L3",
+      "action": "He pours Arabic coffee from a gold-accented dallah into a small cup for smiling guests",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "slow gimbal arc"
+      },
+      "lighting": "dusk, warm lanterns, warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "بسعر وشروط مكتوبة… وخلّ بالك مع ضيوفك.",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_WRITTEN_TERMS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 8.2,
+      "vo_end_s": 11.7
+    },
+    {
+      "id": "HERO15_04",
+      "pdf_ref": "4",
+      "start_s": 12,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "مناسبتك… تبدأ من هنا.",
+      "overlay_ar": [
+        {
+          "text": "مناسبتك… تبدأ من هنا",
+          "start_s": 12.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 12.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16",
+          "16x9"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 14.3,
+      "logo": {
+        "start_s": 12.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "1",
+      "change": "kept"
+    },
+    {
+      "pdf_shot": "2",
+      "change": "«السعر واضح، والمكان موثّق، وكل الخدمات في حجز واحد» + price/verified screen → one request, one offer; real request-form recording"
+    },
+    {
+      "pdf_shot": "3",
+      "change": "«احجز» button press removed; VO now carries the written price and terms"
+    },
+    {
+      "pdf_shot": "4",
+      "change": "#33650C, real logo, CTA «قريبًا»"
+    }
+  ],
+  "edit_notes": {
+    "cuts": "0.8–1.2s cuts inside 3–8s; cold grade shot 1, warm after",
+    "music": "15s cut of the HERO42 theme from the silence point"
+  }
 }

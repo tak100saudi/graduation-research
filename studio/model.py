@@ -26,7 +26,7 @@ SHOT_STATUSES = [
     "qc_passed",
     "rejected",
 ]
-GEN_MODES = {"text_to_video", "image_to_video", "screen_recording", "graphics", "live_action"}
+GEN_MODES = {"text_to_video", "image_to_video", "screen_recording", "graphics", "live_action", "reuse"}
 OVERLAY_POSITIONS = {"top", "center", "lower_third", "bottom", "end_card"}
 
 # Claims that must never appear without approved evidence (CLAUDE.md rules).
@@ -119,6 +119,11 @@ class Project:
         """The take used for target_ratio: native if generated in that ratio, else the source ratio's take."""
         video = self.video(vid)
         shot = video["shots"][shot_index - 1]
+        reuse = shot.get("generation", {}).get("reuse")
+        if shot.get("generation", {}).get("mode") == "reuse" and reuse:
+            # Footage shared with another video (e.g. HERO42 shots recut for S4/T5): no new generation.
+            rvid, rn = reuse.rsplit("_", 1)
+            return self.source_clip(rvid, int(rn), target_ratio)
         ratios = source_ratios(video, shot)
         use = target_ratio if target_ratio in ratios else ratios[0]
         return self.clip_path(vid, shot_index, use), use
@@ -241,6 +246,18 @@ def validate_video(project: Project, video: dict) -> Report:
         mode = shot.get("generation", {}).get("mode")
         if mode not in GEN_MODES:
             r.errors.append(f"{sid}: generation.mode must be one of {sorted(GEN_MODES)}")
+        if mode == "reuse":
+            target = shot.get("generation", {}).get("reuse", "")
+            tv, _, tn = target.rpartition("_")
+            tshots = project.videos.get(tv, {}).get("shots", [])
+            if not (tn.isdigit() and 1 <= int(tn) <= len(tshots)):
+                r.errors.append(f"{sid}: generation.reuse must name an existing shot (got {target!r})")
+            else:
+                ts = tshots[int(tn) - 1]
+                if ts.get("generation", {}).get("mode") == "reuse":
+                    r.errors.append(f"{sid}: cannot reuse {target}, which is itself a reuse")
+                if to_ms(ts["end_s"]) - to_ms(ts["start_s"]) < e - s:
+                    r.errors.append(f"{sid}: reused clip {target} is shorter than this shot")
         src_ratios = shot.get("generation", {}).get("source_ratios")
         if src_ratios is not None:
             bad = [x for x in src_ratios if x not in project.campaign.get("output_targets", {})]

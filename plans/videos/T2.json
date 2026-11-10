@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "سباق مع الوقت ينتهي بهدوء: بدل المكالمات، طلب واحد يجمع المكان والضيافة والخدمات.",
   "source_ref": "source_campaign.pdf p9",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -34,5 +34,247 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "T2_01",
+      "pdf_ref": "T2-A",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · racing the clock",
+      "scene": "CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "Handheld shot, he paces quickly across the majlis with a phone to his ear, slightly stressed expression",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "energetic handheld follow"
+      },
+      "lighting": "cool flat daylight, desaturated cool grade",
+      "vo_ar": "إيه… قريب… كم الضيوف؟",
+      "overlay_ar": [
+        {
+          "text": "POV: عزيمتك قرّبت وما حجزت شي",
+          "start_s": 0.2,
+          "end_s": 2.9,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "light room noise, fast pulse",
+      "negative_extra": [
+        "smiling"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 2.7,
+      "vo_speaker": "C1 (on-camera line, native sound)"
+    },
+    {
+      "id": "T2_02",
+      "pdf_ref": "T2-B",
+      "start_s": 3,
+      "end_s": 6,
+      "beat": "breathe",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He sits down on the floor cushions, takes a slow breath and unlocks his phone with a blank green screen",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "static"
+      },
+      "lighting": "light warming gradually",
+      "vo_ar": "هدّ أعصابك.",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "soft transition into oud at 6s",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.6,
+      "vo_end_s": 5.2
+    },
+    {
+      "id": "T2_03",
+      "pdf_ref": "screen",
+      "start_s": 6,
+      "end_s": 12,
+      "beat": "one request",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "",
+      "action": "Close-up of his hand holding a smartphone with a blank green screen, thumb scrolling and tapping smoothly, white thobe sleeve and silver wristwatch visible",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "static with slight natural hand motion",
+        "focus": "shallow depth of field"
+      },
+      "lighting": "warm golden light",
+      "vo_ar": "طلب واحد: المكان، والضيافة، والخدمات… ونرجع لك بعرض واحد.",
+      "overlay_ar": [
+        {
+          "text": "مكان + ضيافة + خدمات = طلب واحد",
+          "start_s": 6.5,
+          "end_s": 11.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 6.3,
+      "vo_end_s": 11.6,
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP4_SERVICES",
+          "STEP6_REVIEW_SUBMIT"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Real recording of the request form only; test data, never a real customer's details."
+      }
+    },
+    {
+      "id": "T2_04",
+      "pdf_ref": "T2-C",
+      "start_s": 12,
+      "end_s": 16,
+      "beat": "relief",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He leans back relaxed on a sand-beige sofa, places his phone face down on a wooden table and smiles contentedly",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "slow pull-out"
+      },
+      "lighting": "warm golden afternoon light",
+      "vo_ar": "أرسلت طلبك؟ الفريق يتواصل معك.",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 15.4
+    },
+    {
+      "id": "T2_05",
+      "pdf_ref": "",
+      "start_s": 16,
+      "end_s": 18,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 16.5,
+          "end_s": 18,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 16.9,
+          "end_s": 18,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 16.3,
+      "vo_end_s": 17.6,
+      "logo": {
+        "start_s": 16.2,
+        "end_s": 18,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "0–3",
+      "change": "«عزيمتك بكرة» → «عزيمتك قرّبت»: the team reviews and replies, so no next-day promise. OPEN: owner to confirm lead time"
+    },
+    {
+      "pdf_shot": "6–12",
+      "change": "«اختيار مكان + إضافة ذبائح وضيافة» booking screen → request-form recording"
+    },
+    {
+      "pdf_shot": "12–16",
+      "change": "«خلصت. [المدة الفعلية للحجز]» removed (no instant booking) → the team gets in touch"
+    },
+    {
+      "pdf_shot": "16–18",
+      "change": "«احجز الليلة» → «قريبًا»"
+    }
+  ]
 }

@@ -4,8 +4,8 @@
 (الفيديو البطل `HERO42` + 20 إعلان أداء T1–T5 / S1–S5 / X1–X5 / Y1–Y5 + مقطع غير محدد بعد).
 الملف المرجعي هو `source/source_campaign.pdf`، وتعليمات المشروع في `CLAUDE.md`.
 
-> **الحالة الحالية:** تمت قراءة `source_campaign.pdf` (25 صفحة) ومطابقة المقاطع الـ22 (HERO42 وHERO15 و20 إعلانًا) بمددها ومنصاتها.
-> سكربت **HERO42 مكتمل** ومصحَّح وفق brand_facts.md (انظر `docs/HERO42_script_ar.md`). بقية المقاطع معلّمة `pending_script` مع التصحيحات الإلزامية لكل منها.
+> **الحالة الحالية:** السكربتات الـ22 كلها مكتوبة (HERO42 وHERO15 و20 إعلانًا) من `source_campaign.pdf` مع تصحيحات brand_facts.md، وهي **بانتظار اعتماد المالك**: `docs/scripts_ar.md`.
+> أُنتج محليًا: أنيماتك توقيت لكل مقطع، والخط الأخضر وخلفيات بطاقات النهاية (موشن جرافيك). **لم يُولَّد أي فيديو بالذكاء الاصطناعي** لعدم ربط مزوّد بعد.
 
 ## مراجع المالك (حزمة season_venue_kit)
 
@@ -30,7 +30,9 @@ pip install -r requirements-dev.txt     # pytest + pypdf (الأداة نفسه�
 python scripts/studio.py validate        # فحص المدد، الاستمرارية، الادعاءات، سرعة التعليق الصوتي
 python scripts/studio.py validate --production   # يفشل حتى تُحل كل العوائق
 python scripts/studio.py storyboard --all         # output/storyboards/*.md + output/prompts/*.json
-python scripts/studio.py animatic --video HERO42 --ratio 9x16 16x9   # أنيماتك توقيت (شرائح + نصوص عربية + شعار) — ليس لقطات
+python scripts/studio.py graphics --all             # موشن جرافيك محلي: الخط الأخضر + خلفية بطاقة النهاية
+python scripts/studio.py animatic --video all        # أنيماتك توقيت لكل المقاطع (شرائح + نصوص عربية + شعار) — ليس لقطات
+python tools/build_scripts.py && python tools/build_script_doc.py   # إعادة بناء سكربتات الإعلانات ووثيقة المراجعة
 python scripts/studio.py serve           # لوحة الإدارة: http://127.0.0.1:8765
 python -m pytest -q                      # الاختبارات
 ```

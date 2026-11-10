@@ -12,9 +12,9 @@
     "16x9",
     "9x16"
   ],
-  "concept": "",
+  "concept": "سؤال واحد مباشر على خلفية صامتة يفتح النقاش: ليش سعر المناسبة سرّ؟",
   "source_ref": "source_campaign.pdf p15",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -35,5 +35,188 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "X1_01",
+      "pdf_ref": "0–4",
+      "start_s": 0,
+      "end_s": 4,
+      "beat": "hook · one question",
+      "scene": "TURN",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: kinetic white text on an olive-green background",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سؤال واحد… ليش سعر المناسبة سرّ؟",
+      "overlay_ar": [
+        {
+          "text": "ليش سعر المناسبة سرّ؟",
+          "start_s": 0.4,
+          "end_s": 3.9,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "kinetic_text",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 0.4,
+      "vo_end_s": 3.6
+    },
+    {
+      "id": "X1_02",
+      "pdf_ref": "X1-A",
+      "start_s": 4,
+      "end_s": 8,
+      "beat": "the call that goes nowhere",
+      "scene": "CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He stands by a window with his phone to his ear, waiting, then lowers it and shakes his head slightly",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "static"
+      },
+      "lighting": "cool overcast daylight",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [
+        "smiling"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "X1_03",
+      "pdf_ref": "replaces 8–12",
+      "start_s": 8,
+      "end_s": 12,
+      "beat": "the offer in writing",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "",
+      "action": "",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "مع سيزون فينيو… السعر والشروط مكتوبة.",
+      "overlay_ar": [
+        {
+          "text": "سعر وشروط مكتوبة قبل ما تأكد",
+          "start_s": 8.4,
+          "end_s": 11.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_WRITTEN_TERMS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "reuse",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ],
+        "reuse": "T3_03"
+      },
+      "status": "scripted",
+      "vo_start_s": 8.3,
+      "vo_end_s": 11.6,
+      "subtitle_ar": "مع Season Venue… السعر والشروط مكتوبة."
+    },
+    {
+      "id": "X1_04",
+      "pdf_ref": "",
+      "start_s": 12,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 12.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 12.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "16x9",
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 13.8,
+      "logo": {
+        "start_s": 12.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "8–12",
+      "change": "«السعر معلن» + venue page with price → written price and terms; printed offer sheet, unreadable (shares the T3_03 master)"
+    },
+    {
+      "pdf_shot": "12–15",
+      "change": "«زُر الموقع» → «قريبًا»"
+    }
+  ],
+  "tweet_ar": "سؤال بسيط: ليش لازم تتصل عشان تعرف سعر مكان لمناسبتك؟ مع Season Venue: طلب واحد، وعرض واحد بسعر وشروط مكتوبة قبل ما تأكد. قريبًا.",
+  "tweet_note": "PDF hashtag #السوق_صار_له_نظام dropped (reads as a regulator claim); owner may supply one."
 }

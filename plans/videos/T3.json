@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "ترند «التوقع / الواقع»: بدل الاعتماد على صورة، العرض يصلك مكتوبًا بسعره وشروطه قبل التأكيد.",
   "source_ref": "source_campaign.pdf p10",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -40,5 +40,202 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "T3_01",
+      "pdf_ref": "T3-A + T3-B",
+      "start_s": 0,
+      "end_s": 4,
+      "beat": "hook · expectation / reality",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "Split screen 50/50 assembled in the edit from two generated plates with matching slow vertical tilts",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "الصورة شي… والمكان شي ثاني؟",
+      "overlay_ar": [
+        {
+          "text": "التوقع / الواقع",
+          "start_s": 0.3,
+          "end_s": 3.8,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.4,
+      "vo_end_s": 3.4,
+      "composite": {
+        "layout": "vertical split 50/50, right = expectation, left = reality",
+        "plates": [
+          {
+            "clip": "T3_01A",
+            "seconds": 4,
+            "location": "L3",
+            "prompt_en": "Elegant Saudi istiraha at dusk with Najdi mud-plaster walls, warm lanterns, majlis seating and palm trees, slow vertical tilt down, cinematic photorealistic"
+          },
+          {
+            "clip": "T3_01B",
+            "seconds": 4,
+            "location": "L2",
+            "prompt_en": "Dusty, poorly lit rest-house courtyard with faded artificial grass, scattered plastic chairs and a flickering bulb, flat grey daylight, slow vertical tilt down matching the previous shot, desaturated, photorealistic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T3_02",
+      "pdf_ref": "",
+      "start_s": 4,
+      "end_s": 7,
+      "beat": "the divider turns green",
+      "scene": "TURN",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: the divider line between the two halves turns olive green and straightens",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "one clean rise, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "green_line",
+        "color": "#33650C"
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "T3_03",
+      "pdf_ref": "replaces 7–12",
+      "start_s": 7,
+      "end_s": 12,
+      "beat": "the offer in writing",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He sits relaxed on the floor cushions reading a single printed offer sheet, nodding calmly, the document text is soft and unreadable",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 50,
+        "movement": "slow push-in"
+      },
+      "lighting": "warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "مع سيزون فينيو… عرض مكتوب: السعر والشروط قبل ما تأكد.",
+      "overlay_ar": [
+        {
+          "text": "عرض واحد مكتوب",
+          "start_s": 7.4,
+          "end_s": 11.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_WRITTEN_TERMS",
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [
+        "readable document text",
+        "numbers",
+        "official stamps"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ],
+        "reframe_note": "16:9 master shared with X1_03; cropped to 9:16 here"
+      },
+      "status": "scripted",
+      "vo_start_s": 7.2,
+      "vo_end_s": 11.8,
+      "subtitle_ar": "مع Season Venue… عرض مكتوب: السعر والشروط قبل ما تأكد."
+    },
+    {
+      "id": "T3_04",
+      "pdf_ref": "",
+      "start_s": 12,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 12.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 12.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 13.8,
+      "logo": {
+        "start_s": 12.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "7–12",
+      "change": "«الأماكن موثّقة قبل ما تظهر لك» + verified-venue screen + real venue footage → postponed (no announced verification process). Replaced by the written offer. OPEN: is there a venue-inspection policy we may state?"
+    },
+    {
+      "pdf_shot": "12–15",
+      "change": "«تصفّح الأماكن الموثّقة» → tagline + «قريبًا»"
+    }
+  ]
 }

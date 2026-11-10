@@ -340,7 +340,8 @@
           "16x9"
         ],
         "tool": "After Effects / CapCut — not generated",
-        "color": "#33650C"
+        "color": "#33650C",
+        "graphic": "green_line"
       },
       "status": "scripted",
       "vo_start_s": 14.8,
@@ -608,7 +609,8 @@
           "16x9"
         ],
         "tool": "After Effects / CapCut",
-        "color": "#33650C"
+        "color": "#33650C",
+        "graphic": "end_card"
       },
       "status": "scripted",
       "vo_start_s": 37.6,

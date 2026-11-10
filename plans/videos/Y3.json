@@ -3,7 +3,7 @@
   "kind": "performance",
   "family": "Y",
   "platform": "YouTube Shorts",
-  "title_ar": "«كيف نوثّق المكان قبل ما يظهر لك؟»",
+  "title_ar": "«كيف تطلب مناسبتك؟ ست خطوات»",
   "tone": "تنظيم",
   "duration_s": 20,
   "duration_source": "source_campaign.pdf p20",
@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "بدل «كيف نوثّق المكان»: كيف يطلب العميل مناسبته في ست خطوات، بتسجيل شاشة حقيقي.",
   "source_ref": "source_campaign.pdf p20",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
   "subtitles": false,
   "mandatory_corrections": [
@@ -42,5 +42,244 @@
       "source": "brand_facts.md"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "Y3_01",
+      "pdf_ref": "0–3",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook",
+      "scene": "SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He settles on the floor cushions and unlocks his phone with a blank green screen, relaxed",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 50,
+        "movement": "slow push-in"
+      },
+      "lighting": "warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "كيف تطلب مناسبتك؟ ست خطوات.",
+      "overlay_ar": [
+        {
+          "text": "كيف تطلب مناسبتك؟",
+          "start_s": 0.3,
+          "end_s": 2.9,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.3,
+      "vo_end_s": 2.8
+    },
+    {
+      "id": "Y3_02",
+      "pdf_ref": "replaces 3–14",
+      "start_s": 3,
+      "end_s": 14,
+      "beat": "the six steps",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "",
+      "action": "Real screen recording of the request form, one step at a time, full frame",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "نوع المناسبة. المدينة والتاريخ. الضيوف والميزانية. الخدمات. اسمك وجوالك. راجع… وأرسل.",
+      "overlay_ar": [
+        {
+          "text": "نوع المناسبة",
+          "start_s": 3.1,
+          "end_s": 4.73,
+          "position": "top",
+          "style": "headline"
+        },
+        {
+          "text": "المدينة والتاريخ التقريبي",
+          "start_s": 4.93,
+          "end_s": 6.57,
+          "position": "top",
+          "style": "headline"
+        },
+        {
+          "text": "الضيوف · الميزانية · نوع الحضور",
+          "start_s": 6.77,
+          "end_s": 8.4,
+          "position": "top",
+          "style": "headline"
+        },
+        {
+          "text": "الخدمات",
+          "start_s": 8.6,
+          "end_s": 10.23,
+          "position": "top",
+          "style": "headline"
+        },
+        {
+          "text": "الاسم والجوال",
+          "start_s": 10.43,
+          "end_s": 12.07,
+          "position": "top",
+          "style": "headline"
+        },
+        {
+          "text": "راجع وأرسل",
+          "start_s": 12.27,
+          "end_s": 13.9,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "screen_recording",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP2_CITY_DATE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE",
+          "STEP4_SERVICES",
+          "STEP5_CONTACT",
+          "STEP6_REVIEW_SUBMIT"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.3,
+      "vo_end_s": 13.6,
+      "shows_product_ui": true
+    },
+    {
+      "id": "Y3_03",
+      "pdf_ref": "replaces 14–17",
+      "start_s": 14,
+      "end_s": 17,
+      "beat": "receipt, then the team",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "",
+      "action": "Real screen recording of the request-received confirmation",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "يوصلك تأكيد الاستلام… وفريقنا يتواصل معك.",
+      "overlay_ar": [
+        {
+          "text": "تأكيد استلام الطلب",
+          "start_s": 14.3,
+          "end_s": 16.9,
+          "position": "top",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "screen_recording",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "flow_steps": [
+          "CONFIRMATION"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 14.1,
+      "vo_end_s": 16.9,
+      "shows_product_ui": true
+    },
+    {
+      "id": "Y3_04",
+      "pdf_ref": "",
+      "start_s": 17,
+      "end_s": 20,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "سيزون فينيو… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 17.5,
+          "end_s": 20,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 17.9,
+          "end_s": 20,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 17.3,
+      "vo_end_s": 18.8,
+      "logo": {
+        "start_s": 17.2,
+        "end_s": 20,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "title_pdf": "«كيف نوثّق المكان قبل ما يظهر لك؟»",
+  "reconciliation": [
+    {
+      "pdf_shot": "all",
+      "change": "The PDF's verification behind-the-scenes cannot be made: no announced verification process (brand_facts). Replaced, as the owner's table requires, by «كيف يطلب العميل مناسبته؟ (6 خطوات)»"
+    },
+    {
+      "pdf_shot": "3–14",
+      "change": "live-action field visit → real request-form recording, six steps in 11s"
+    },
+    {
+      "pdf_shot": "14–17",
+      "change": "«يظهر لك موثّق» + badge → receipt confirmation, then the team gets in touch"
+    }
+  ],
+  "production_note": "No AI generation except the 3s hook. Needs the real recording; blocked until the demo is reachable."
 }

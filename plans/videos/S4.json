@@ -11,9 +11,9 @@
   "aspect_ratios": [
     "9x16"
   ],
-  "concept": "",
+  "concept": "إعلان العلامة: أربع لقطات فوضى سريعة تتجمّع في خط أخضر يستقيم، ثم قاعات شريكة وعرض واحد.",
   "source_ref": "source_campaign.pdf p14",
-  "source_status": "pending_script",
+  "source_status": "scripted",
   "platform_style": "Real-snap feel at start (front camera, natural hand motion) then cinematic; very short text in safe area; «اسحب للأعلى» CTA with motion arrow in last 3s. Extra negative: overly polished look in selfie shots.",
   "subtitles": true,
   "mandatory_corrections": [
@@ -40,5 +40,258 @@
       "source": "brand_facts.md / source_campaign.pdf p24"
     }
   ],
-  "shots": []
+  "shots": [
+    {
+      "id": "S4_01",
+      "pdf_ref": "0–4",
+      "start_s": 0,
+      "end_s": 1,
+      "beat": "chaos montage 1/4",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "السوق كان يحتاج ترتيب…",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "reuse",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reuse": "HERO42_01"
+      },
+      "status": "scripted",
+      "vo_start_s": 0.4,
+      "vo_end_s": 3.4
+    },
+    {
+      "id": "S4_02",
+      "pdf_ref": "0–4",
+      "start_s": 1,
+      "end_s": 2,
+      "beat": "chaos montage 2/4",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "reuse",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reuse": "HERO42_02"
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "S4_03",
+      "pdf_ref": "0–4",
+      "start_s": 2,
+      "end_s": 3,
+      "beat": "chaos montage 3/4",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "reuse",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reuse": "HERO42_05"
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "S4_04",
+      "pdf_ref": "0–4",
+      "start_s": 3,
+      "end_s": 4,
+      "beat": "chaos montage 4/4",
+      "scene": "CHAOS",
+      "characters": [],
+      "location": "",
+      "action": "",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "reuse",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reuse": "HERO42_04"
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "S4_05",
+      "pdf_ref": "4–6",
+      "start_s": 4,
+      "end_s": 6,
+      "beat": "the green line",
+      "scene": "TURN",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: black screen, the crooked olive-green line straightens and glows",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "وصل.",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "green_line",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 4.6,
+      "vo_end_s": 5.6
+    },
+    {
+      "id": "S4_06",
+      "pdf_ref": "replaces 6–12",
+      "start_s": 6,
+      "end_s": 12,
+      "beat": "partner venues, one offer",
+      "scene": "SYSTEM",
+      "characters": [],
+      "location": "L4",
+      "action": "Slow glide through the empty, beautifully prepared hall with round tables set",
+      "camera": {
+        "shot_size": "WS",
+        "lens_mm": 24,
+        "movement": "slow dolly forward"
+      },
+      "lighting": "soft warm chandelier light",
+      "vo_ar": "سيزون فينيو… قاعات وشاليهات واستراحات شريكة، وعرض واحد واضح.",
+      "overlay_ar": [
+        {
+          "text": "قاعات · شاليهات · استراحات شريكة",
+          "start_s": 6.5,
+          "end_s": 11.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_PARTNER_VENUES",
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "",
+      "negative_extra": [],
+      "generation": {
+        "mode": "text_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 6.3,
+      "vo_end_s": 11.6,
+      "subtitle_ar": "Season Venue… قاعات وشاليهات واستراحات شريكة، وعرض واحد واضح."
+    },
+    {
+      "id": "S4_07",
+      "pdf_ref": "",
+      "start_s": 12,
+      "end_s": 15,
+      "beat": "end card",
+      "scene": "END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo fades in",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "تعرّف علينا… قريبًا.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد.. عرض واحد.. مناسبة أسهل",
+          "start_s": 12.5,
+          "end_s": 15,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 12.9,
+          "end_s": 15,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "graphic": "end_card",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 12.3,
+      "vo_end_s": 13.8,
+      "logo": {
+        "start_s": 12.2,
+        "end_s": 15,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.4
+      }
+    }
+  ],
+  "reconciliation": [
+    {
+      "pdf_shot": "0–4",
+      "change": "kept: recut of HERO42 shots 1, 2, 4, 3B at 9:16, no new generation. «منظّم» → «ترتيب» so it cannot read as a regulator claim (owner may restore)"
+    },
+    {
+      "pdf_shot": "6–12",
+      "change": "«أماكن موثّقة، وأسعار واضحة» + verified-venues grid + count → partner venues and one clear offer, no number"
+    },
+    {
+      "pdf_shot": "12–15",
+      "change": "swipe up → «قريبًا»"
+    }
+  ]
 }

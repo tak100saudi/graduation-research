@@ -37,9 +37,19 @@ def build(project: Project, vid: str, ratio: str) -> Path:
     parts, inputs = [], []
     for i, s in enumerate(shots):
         d = (to_ms(s["end_s"]) - to_ms(s["start_s"])) / 1000
+        clip, _ = project.source_clip(vid, i + 1, ratio)
+        if clip.exists():
+            # A real asset exists (local motion graphics or an approved take): show it, with a small tag.
+            inputs += ["-i", str(clip)]
+            tag = f"drawtext=fontfile={mono}:text='{_esc(s['id'])}':fontcolor=white@0.5:fontsize={int(fs*0.8)}:x=24:y=24"
+            parts.append(f"[{i}:v]trim=duration={d:.3f},setpts=PTS-STARTPTS,fps={fps},"
+                         f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},{tag},setsar=1,format=yuv420p[s{i}]")
+            continue
         inputs += ["-f", "lavfi", "-i", f"color=c={_slate_color(s)}:s={w}x{h}:r={fps}:d={d:.3f}"]
-        lines = [f"ANIMATIC - NOT FINAL FOOTAGE", f"{s['id']}  (PDF {s.get('pdf_ref', '')})  {s['start_s']}-{s['end_s']}s",
-                 f"{s.get('beat', '')}", f"mode: {s.get('generation', {}).get('mode')}  src: {','.join(s.get('generation', {}).get('source_ratios', []))}"]
+        gen = s.get("generation", {})
+        src = gen.get("reuse") or ",".join(gen.get("source_ratios", []))
+        lines = ["ANIMATIC - NOT FINAL FOOTAGE", f"{s['id']}  (PDF {s.get('pdf_ref', '')})  {s['start_s']}-{s['end_s']}s",
+                 f"{s.get('beat', '')}", f"mode: {gen.get('mode')}  src: {src}"]
         y0 = int(h * 0.30)
         dt = ",".join(
             f"drawtext=fontfile={mono}:text='{_esc(t)}':fontcolor=white@0.85:fontsize={fs}:x=(w-tw)/2:y={y0 + k * int(fs * 1.6)}"
