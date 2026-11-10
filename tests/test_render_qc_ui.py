@@ -54,6 +54,11 @@ def test_render_refuses_missing_clips_audio_and_reframing(proj):
     media(proj, voice=False, music=False)
     with pytest.raises(render.RenderError, match="allow-silent"):
         render.render(proj, "DEMO1", "9x16")
+    with pytest.raises(render.RenderError, match="Missing clips: assets/clips/DEMO1_01_16x9.mp4"):
+        render.render(proj, "DEMO1", "16x9", allow_silent=True)
+    import shutil
+    for i in (1, 2):  # a vertical take mislabelled as 16:9 must not be silently cropped
+        shutil.copy(proj.root / "assets/clips" / f"DEMO1_{i:02d}.mp4", proj.root / "assets/clips" / f"DEMO1_{i:02d}_16x9.mp4")
     with pytest.raises(render.RenderError, match="not native 16x9"):
         render.render(proj, "DEMO1", "16x9", allow_silent=True)
     out = render.render(proj, "DEMO1", "9x16", allow_silent=True)
@@ -107,7 +112,9 @@ def test_draft_burn_uses_official_logo_untouched(tmp_path):
     c = copy.deepcopy(CAMPAIGN)
     c["brand"].update({"logo_supplied": True, "logo_path": "assets/brand/logo_transparent.png",
                        "logo_dark_bg_path": "assets/brand/logo_transparent_for_dark_bg.png"})
-    proj = write_project(tmp_path, campaign=c)
+    v = copy.deepcopy(__import__("conftest").VIDEO)
+    v["shots"][1]["logo"] = {"start_s": 1.8, "end_s": 3.0, "width_frac": 0.3, "variant": "dark"}
+    proj = write_project(tmp_path, campaign=c, video=v)
     for f in ("logo_transparent.png", "logo_transparent_for_dark_bg.png"):
         shutil.copy(REPO / "assets" / "brand" / f, tmp_path / "assets" / "brand" / f)
     media(proj)
@@ -117,3 +124,24 @@ def test_draft_burn_uses_official_logo_untouched(tmp_path):
     out = render.burn(proj, "DEMO1", "9x16", draft=True, logo_variant="dark")
     assert out.name.endswith("_DRAFT.mp4")
     assert abs(float(qc.probe(out)["format"]["duration"]) - 3.0) < 0.1
+
+
+
+@needs_ffmpeg
+def test_planned_reframe_crop_and_pillarbox(tmp_path):
+    """16:9 master cropped to 9:16; vertical phone close-up pillarboxed into 16:9."""
+    import copy
+    from conftest import VIDEO, write_project
+    v = copy.deepcopy(VIDEO)
+    v["shots"][0]["generation"]["source_ratios"] = ["16x9"]   # wide master
+    v["shots"][1]["generation"]["source_ratios"] = ["9x16"]   # phone close-up
+    proj = write_project(tmp_path, video=v)
+    make_clip(proj.root / "assets/clips/DEMO1_01_16x9.mp4", 320, 180, 2.0)
+    make_clip(proj.root / "assets/clips/DEMO1_02.mp4", 180, 320, 2.0)
+    for ratio, size in (("9x16", (180, 320)), ("16x9", (320, 180))):
+        out = render.render(proj, "DEMO1", ratio, allow_silent=True)["clean"]
+        st = next(s for s in qc.probe(out)["streams"] if s["codec_type"] == "video")
+        assert (st["width"], st["height"]) == size
+    from studio.generate import select_packages
+    pk = select_packages(proj, "DEMO1", None, ["9x16", "16x9"])
+    assert sorted((p["shot_id"], p["ratio"]) for p in pk) == [("DEMO1_01", "16x9"), ("DEMO1_02", "9x16")]

@@ -13,7 +13,7 @@ from __future__ import annotations
 import hashlib
 import json
 
-from .model import Project, to_ms
+from .model import Project, source_ratios, to_ms, video_fps
 
 CAMERA_ORDER = ["shot_size", "angle", "lens_mm", "movement", "focus"]
 SHOT_SIZE_NAMES = {
@@ -67,11 +67,15 @@ def build_package(project: Project, video: dict, shot: dict, ratio: str) -> dict
     if look.get("anchor_description"):
         segments.append("Look: " + look["anchor_description"])
     framing = "vertical 9:16 composition" if ratio == "9x16" else "horizontal 16:9 composition"
-    segments.append(f"{framing}, {project.campaign.get('fps', 24)}fps, no on-screen text")
-    prompt_en = ". ".join(s.rstrip(". ") for s in segments if s) + "."
+    if ratio == "16x9" and "9x16" in video.get("aspect_ratios", []) and "9x16" not in source_ratios(video, shot):
+        framing += " with the subject kept inside the centre third for a clean vertical 9:16 crop"
+    segments.append(f"{framing}, {video_fps(project, video)}fps, no on-screen text")
+    prompt_en = ". ".join(x[0].upper() + x[1:] for x in (seg.strip().rstrip(".") for seg in segments) if x) + "."
 
     negative = list(project.continuity.get("negative_prompt_global", []))
+    negative += video.get("negative_extra", [])
     negative += shot.get("negative_extra", [])
+    negative = list(dict.fromkeys(negative))  # keep order, drop duplicates
     dur_s = (to_ms(shot["end_s"]) - to_ms(shot["start_s"])) / 1000
 
     overlays = []
@@ -133,5 +137,6 @@ def build_video_packages(project: Project, vid: str) -> list[dict]:
     out = []
     for ratio in video.get("aspect_ratios", []):
         for shot in video.get("shots", []):
-            out.append(build_package(project, video, shot, ratio))
+            if ratio in source_ratios(video, shot):
+                out.append(build_package(project, video, shot, ratio))
     return out

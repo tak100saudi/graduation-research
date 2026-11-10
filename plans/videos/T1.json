@@ -2,15 +2,37 @@
   "id": "T1",
   "kind": "performance",
   "family": "T",
-  "family_note": "T-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "TikTok",
+  "title_ar": "«كلّمني خاص… آخر مرة»",
+  "tone": "تنظيم",
+  "duration_s": 15,
+  "duration_source": "source_campaign.pdf p8",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p8",
+  "source_status": "pending_script",
+  "platform_style": "Cut every 1–1.5s, big auto-caption style text (white, black outline), conversational VO, native sound first then campaign music. 2s green end card: [LOGO] + CTA.",
+  "subtitles": true,
+  "mandatory_corrections": [
+    {
+      "replace": "«السعر قدامك / ظاهر على كل مكان / السعر معلن»",
+      "with": "سعر وشروط مكتوبة قبل ما تأكد",
+      "claims": [
+        "CLM_WRITTEN_TERMS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
   ],
   "shots": []
 }

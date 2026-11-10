@@ -12,7 +12,7 @@ def test_exactly_22_video_slots_with_all_concept_families():
     p = Project.load(REPO)
     ids = p.campaign["video_ids"]
     assert len(ids) == 22 == p.campaign["expected_video_count"]
-    assert "HERO42" in ids
+    assert ids[:2] == ["HERO42", "HERO15"]
     for fam in "TSXY":
         assert [f"{fam}{i}" for i in range(1, 6)] == [i for i in ids if i[0] == fam and len(i) == 2]
     assert set(ids) == set(p.videos)
@@ -26,7 +26,7 @@ def test_repo_plans_have_no_structural_errors_but_block_production():
 
 def test_no_placeholder_creative_content_is_presented_as_final():
     for v in Project.load(REPO).videos.values():
-        if v["source_status"] in ("pending_source", "unidentified"):
+        if v["source_status"] in ("pending_source", "unidentified", "pending_script"):
             assert v["shots"] == [] and v["concept"] == ""
 
 

@@ -11,7 +11,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from .model import Project, save_json, to_ms
+from .model import Project, save_json, to_ms, video_fps
 
 HUMAN_CHECKLIST = [
     "Every frame reviewed: no artefacts, warped hands/faces, or identity drift between shots",
@@ -86,7 +86,7 @@ def check_clip(project: Project, path: Path, planned_s: float, ratio: str | None
 def check_deliverable(project: Project, vid: str, ratio: str, path: Path) -> dict:
     video = project.video(vid)
     w, h = project.campaign["output_targets"][ratio]
-    fps = project.campaign.get("fps", 24)
+    fps = video_fps(project, video)
     planned = to_ms(video["duration_s"]) / 1000
     info = probe(path)
     v = next((s for s in info["streams"] if s["codec_type"] == "video"), {})

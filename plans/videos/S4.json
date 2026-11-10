@@ -2,15 +2,43 @@
   "id": "S4",
   "kind": "performance",
   "family": "S",
-  "family_note": "S-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "Snapchat",
+  "title_ar": "«السوق كان يحتاج منظّم»",
+  "tone": "تنظيم",
+  "duration_s": 15,
+  "duration_source": "source_campaign.pdf p14",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p14",
+  "source_status": "pending_script",
+  "platform_style": "Real-snap feel at start (front camera, natural hand motion) then cinematic; very short text in safe area; «اسحب للأعلى» CTA with motion arrow in last 3s. Extra negative: overly polished look in selfie shots.",
+  "subtitles": true,
+  "mandatory_corrections": [
+    {
+      "replace": "«موثّق / أماكن موثّقة» وشارة موثّق",
+      "with": "قاعات وشاليهات واستراحات شريكة",
+      "claims": [
+        "CLM_PARTNER_VENUES"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "«تنظّم السوق / المنظّم» read as a regulator",
+      "with": "advertising phrase only — no seals, no licensing implication (PDF p2); owner to confirm wording",
+      "claims": [],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
   ],
   "shots": []
 }

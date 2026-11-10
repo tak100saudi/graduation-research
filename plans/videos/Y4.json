@@ -2,15 +2,29 @@
   "id": "Y4",
   "kind": "performance",
   "family": "Y",
-  "family_note": "Y-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "YouTube Shorts",
+  "title_ar": "«الضيافة وصلت قبل الضيوف»",
+  "tone": "راحة",
+  "duration_s": 16,
+  "duration_source": "source_campaign.pdf p21",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p21",
+  "source_status": "pending_script",
+  "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
+  "subtitles": false,
+  "mandatory_corrections": [
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
   ],
   "shots": []
 }

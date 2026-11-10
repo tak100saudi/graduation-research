@@ -2,15 +2,35 @@
   "id": "Y5",
   "kind": "performance",
   "family": "Y",
-  "family_note": "Y-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "YouTube Shorts",
+  "title_ar": "«ادفع براحتك»",
+  "tone": "تنظيم",
+  "duration_s": 15,
+  "duration_source": "source_campaign.pdf p21",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p21",
+  "source_status": "pending_script",
+  "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
+  "subtitles": false,
+  "mandatory_corrections": [
+    {
+      "replace": "Version B naming Tabby/Tamara",
+      "with": "دفع مرن اختياري عبر جهات تمويل مرخصة من ساما + on-screen disclosure DSC_FLEX_PAY",
+      "claims": [
+        "CLM_FLEX_PAY"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Unconfirmed features (date/count filter, reminder, invoice, owner calendar, payment policy)",
+      "with": "delete the line",
+      "claims": [],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
   ],
   "shots": []
 }

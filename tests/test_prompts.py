@@ -10,7 +10,7 @@ def test_prompt_contains_anchors_camera_and_framing(proj):
     p = build_package(proj, v, v["shots"][0], "9x16")
     for s in ("FIXTURE ANCHOR A", "white thobe", "FIXTURE COURTYARD", "golden hour", "FIXTURE LOOK",
               "35mm lens", "slow push-in", "Medium shot", "vertical 9:16", "soft key from window"):
-        assert s in p["prompt_en"], s
+        assert s.lower() in p["prompt_en"].lower(), s
     assert "16:9" in build_package(proj, v, v["shots"][0], "16x9")["prompt_en"]
 
 

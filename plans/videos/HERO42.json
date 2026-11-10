@@ -1,14 +1,625 @@
 {
   "id": "HERO42",
   "kind": "hero",
+  "platform": "all channels",
+  "title_ar": "الفيديو الرئيسي",
   "duration_s": 42,
-  "duration_source": "inferred_from_id",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "duration_source": "source_campaign.pdf p3",
+  "fps": 24,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "16x9",
+    "9x16"
   ],
-  "shots": []
+  "primary_ratio": "16x9",
+  "concept": "رحلة فيصل من فوضى الحجز القديمة إلى ليلة مناسبة مرتّبة. الخط الأخضر الذي يستقيم هو لحظة التحوّل، وبعده رحلة العميل الحقيقية: طلب واحد ← الفريق يتواصل ← عرض واحد ← عقد وعربون ← مناسبة مريحة.",
+  "source_ref": "source_campaign.pdf pp3-7",
+  "source_status": "scripted",
+  "subtitles": false,
+  "negative_extra": [
+    "readable chat text",
+    "bank logos",
+    "real app interface",
+    "bells"
+  ],
+  "music_cues": [
+    {
+      "start_s": 0,
+      "end_s": 14,
+      "cue": "low tense pulse + phone vibration + room murmur"
+    },
+    {
+      "start_s": 14,
+      "end_s": 15,
+      "cue": "full silence"
+    },
+    {
+      "start_s": 15,
+      "end_s": 42,
+      "cue": "calm orchestra + oud, swelling at shot 11 under coffee pouring and soft laughter; no bells"
+    }
+  ],
+  "edit_notes": {
+    "cuts": "hard cuts in 1–4 (0–14s); match cut phone photo → L2 (shot 3 → 4); cut to silence at shot 6; 8–12-frame dissolves in the system section",
+    "grade": "cold desaturated LUT 1–5; warm olive/gold LUT from shot 7",
+    "text": "Tajawal (draft) until 29LT Bukra is licensed — replaces the PDF's IBM Plex Sans Arabic; text rises 8px and fades in over 6 frames",
+    "screens": "track green screens in 1, 3, 5, 7; real request-form recording only in 7; [LOGO] only in 12 at 30% of frame width"
+  },
+  "reconciliation": [
+    {
+      "pdf_shot": "1–5",
+      "change": "kept (timing, VO, visuals)"
+    },
+    {
+      "pdf_shot": "3",
+      "change": "split per the PDF's own prompts into 3A (2s, 9:16) + 3B (2s, 16:9)"
+    },
+    {
+      "pdf_shot": "6",
+      "change": "VO «جت Season Venue تنظّم سوق المناسبات. السعر قدامك… والمكان موثّق» and overlay «السعر واضح · المكان موثّق» removed (banned). Now: one request, real request-form recording."
+    },
+    {
+      "pdf_shot": "7",
+      "change": "split 2s + 3s to add the team getting in touch; overlay «كل شيء في حجز واحد» → «عرض واحد: قاعة · ضيافة · خدمات»; the «إضافة ضيافة وذبائح» screen removed (feature not confirmed)"
+    },
+    {
+      "pdf_shot": "8",
+      "change": "«احجز» press + «الدفع داخل المنصة… محفوظ ومضمون» / «دفع آمن داخل المنصة» replaced by written terms + contract and deposit"
+    },
+    {
+      "pdf_shot": "9",
+      "change": "kept"
+    },
+    {
+      "pdf_shot": "10",
+      "change": "#0F5132 → #33650C, real logo, CTA «قريبًا»"
+    }
+  ],
+  "shots": [
+    {
+      "id": "HERO42_01",
+      "pdf_ref": "1",
+      "start_s": 0,
+      "end_s": 3,
+      "beat": "hook · chaos",
+      "scene": "SC1_CHAOS",
+      "characters": [],
+      "location": "L1",
+      "action": "Top-down close shot of a smartphone lying on the coffee table, vibrating continuously and sliding slightly across the wood, blank green screen with no UI",
+      "camera": {
+        "shot_size": "INSERT",
+        "angle": "top-down",
+        "lens_mm": 50,
+        "movement": "very slow push-in",
+        "focus": "shallow depth of field"
+      },
+      "lighting": "cold soft daylight, desaturated cool grade leaning grey, subtle tension",
+      "vo_ar": "كم مكالمة تحتاج… عشان تعرف سعر؟",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "continuous phone vibration buzz, low tense pulse",
+      "negative_extra": [
+        "smiling",
+        "happy expression"
+      ],
+      "generation": {
+        "mode": "text_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 0.2,
+      "vo_end_s": 3.0,
+      "edit_graphics": [
+        {
+          "type": "missed-call notifications",
+          "text_ar": "مكالمة فائتة",
+          "note": "generic phone-OS style, no real app or brand, tracked onto the green screen"
+        }
+      ]
+    },
+    {
+      "id": "HERO42_02",
+      "pdf_ref": "2",
+      "start_s": 3,
+      "end_s": 7,
+      "beat": "pain · private messages",
+      "scene": "SC1_CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He sits on the floor cushions typing on his phone with a blank green screen, then raises an eyebrow in quiet frustration, natural hand movement",
+      "camera": {
+        "shot_size": "OTS",
+        "lens_mm": 50,
+        "movement": "slow dolly from his shoulder round to his face"
+      },
+      "lighting": "cool side light, cold soft daylight, desaturated cool grade leaning grey",
+      "vo_ar": "وكم مرة سمعت: «كلّمني خاص»؟",
+      "overlay_ar": [
+        {
+          "text": "بكم الليلة؟",
+          "start_s": 3.6,
+          "end_s": 5.4,
+          "position": "center",
+          "style": "body",
+          "kind": "chat_bubble"
+        },
+        {
+          "text": "كلّمني خاص",
+          "start_s": 5.0,
+          "end_s": 6.9,
+          "position": "center",
+          "style": "body",
+          "kind": "chat_bubble"
+        }
+      ],
+      "claims": [],
+      "sfx": "phone vibration, room tone",
+      "negative_extra": [
+        "smiling",
+        "happy expression",
+        "readable chat text"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 3.3,
+      "vo_end_s": 6.6
+    },
+    {
+      "id": "HERO42_03",
+      "pdf_ref": "3A",
+      "start_s": 7,
+      "end_s": 9,
+      "beat": "pain · photo vs reality (photo)",
+      "scene": "SC1_CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "",
+      "action": "Close-up of his hand holding a smartphone with a blank green screen, thumb swiping, warm aspirational reflection on the glass",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "static, slight natural hand motion",
+        "focus": "shallow depth of field"
+      },
+      "lighting": "cool room light with a warm reflection on the phone glass",
+      "vo_ar": "وكم مرة كانت الصورة شيء… والمكان شيء ثاني؟",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "hard cut, soft swipe",
+      "negative_extra": [
+        "smiling",
+        "happy expression"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reframe_note": "vertical phone close-up; pillarboxed in the 16:9 cut"
+      },
+      "status": "scripted",
+      "vo_start_s": 7.1,
+      "vo_end_s": 10.9,
+      "edit_graphics": [
+        {
+          "type": "screen insert",
+          "text_ar": "",
+          "note": "an idealised istiraha photo (generated L3 still or licensed stock, no venue name) slides onto the green screen"
+        }
+      ]
+    },
+    {
+      "id": "HERO42_04",
+      "pdf_ref": "3B",
+      "start_s": 9,
+      "end_s": 11,
+      "beat": "pain · photo vs reality (reality)",
+      "scene": "SC1_CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "L2",
+      "action": "He stands at the metal gate and slowly lowers his phone with a disappointed expression, the screen is not visible",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "subtle handheld"
+      },
+      "lighting": "flat grey daylight, desaturated cool tones",
+      "vo_ar": "",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "wind, distant traffic",
+      "negative_extra": [
+        "smiling",
+        "happy expression"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "edit_note": "match cut from the istiraha photo on the phone (shot 03)"
+    },
+    {
+      "id": "HERO42_05",
+      "pdf_ref": "4",
+      "start_s": 11,
+      "end_s": 14,
+      "beat": "pain · deposit to an unknown account",
+      "scene": "SC1_CHAOS",
+      "characters": [
+        "C1"
+      ],
+      "location": "",
+      "action": "Extreme close-up of his thumb hovering hesitantly above a smartphone with a blank green screen, the thumb pauses and trembles slightly, white thobe sleeve and silver wristwatch visible",
+      "camera": {
+        "shot_size": "ECU",
+        "lens_mm": 50,
+        "movement": "locked off",
+        "focus": "very shallow depth of field"
+      },
+      "lighting": "cool light with a faint burnt-orange rim light, tense mood",
+      "vo_ar": "وتحويل عربون… لحساب ما تعرفه.",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_PAIN_QUESTIONS"
+      ],
+      "sfx": "pulse thins out; [pause] after the line",
+      "negative_extra": [
+        "smiling",
+        "happy expression",
+        "bank logos"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "9x16"
+        ],
+        "reframe_note": "vertical phone close-up; pillarboxed in the 16:9 cut"
+      },
+      "status": "scripted",
+      "vo_start_s": 11.2,
+      "vo_end_s": 13.6,
+      "edit_graphics": [
+        {
+          "type": "screen insert",
+          "text_ar": "تحويل",
+          "note": "generic transfer button, no bank name or logo"
+        }
+      ]
+    },
+    {
+      "id": "HERO42_06",
+      "pdf_ref": "5",
+      "start_s": 14,
+      "end_s": 17,
+      "beat": "turn · the green line",
+      "scene": "SC2_TURN",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: black screen, a crooked olive-green line draws itself, then slowly straightens and glows",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "هالفوضى… انتهت.",
+      "overlay_ar": [
+        {
+          "text": "انتهت الفوضى.",
+          "start_s": 15.2,
+          "end_s": 16.9,
+          "position": "center",
+          "style": "headline"
+        }
+      ],
+      "claims": [],
+      "sfx": "full silence 14–15s, then the orchestra enters",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16",
+          "16x9"
+        ],
+        "tool": "After Effects / CapCut — not generated",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 14.8,
+      "vo_end_s": 16.6
+    },
+    {
+      "id": "HERO42_07",
+      "pdf_ref": "6",
+      "start_s": 17,
+      "end_s": 22,
+      "beat": "journey 1 · one request",
+      "scene": "SC3_SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He relaxes on the floor cushions and calmly taps through a short form on his phone with a blank green screen, calm satisfied expression; side insert of the phone",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "slow lateral slider, then a side insert of the phone"
+      },
+      "lighting": "golden afternoon light, warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "مع سيزون فينيو… طلب واحد: مناسبتك، وضيوفك، وميزانيتك.",
+      "overlay_ar": [
+        {
+          "text": "طلب واحد",
+          "start_s": 17.8,
+          "end_s": 21.8,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER",
+        "CLM_SIX_STEPS"
+      ],
+      "sfx": "orchestra with oud, room warmth",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 17.3,
+      "vo_end_s": 21.6,
+      "subtitle_ar": "مع Season Venue… طلب واحد: مناسبتك، وضيوفك، وميزانيتك.",
+      "shows_product_ui": true,
+      "screen_insert": {
+        "flow_steps": [
+          "STEP1_EVENT_TYPE",
+          "STEP3_GUESTS_BUDGET_ATTENDANCE",
+          "STEP4_SERVICES",
+          "STEP6_REVIEW_SUBMIT"
+        ],
+        "source_path": "assets/screen_recordings/request_flow_9x16.mp4",
+        "method": "tracked screen replace onto the green phone screen",
+        "note": "Replaces the PDF's prices + «موثّق» badge screen. Real recording only (brand_facts.md). Test data only, never a real customer's details."
+      }
+    },
+    {
+      "id": "HERO42_08",
+      "pdf_ref": "7 (A, new)",
+      "start_s": 22,
+      "end_s": 24,
+      "beat": "journey 2 · the team gets in touch",
+      "scene": "SC3_SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "His phone gives one soft vibration; he answers it calmly, nods warmly while listening, the screen is not visible",
+      "camera": {
+        "shot_size": "MCU",
+        "lens_mm": 50,
+        "movement": "slow push-in"
+      },
+      "lighting": "warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "نتواصل معك… ونرجع لك بعرض واحد: قاعة، وضيافة، وخدمات.",
+      "overlay_ar": [],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "one soft vibration, no ringtone",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 22.1,
+      "vo_end_s": 26.8,
+      "notes": "Added to show the real journey: after the request the team reviews and contacts the customer (deck p7). Split from PDF shot 7 (5s = 2s + 3s)."
+    },
+    {
+      "id": "HERO42_09",
+      "pdf_ref": "7 (B)",
+      "start_s": 24,
+      "end_s": 27,
+      "beat": "journey 3 · one offer",
+      "scene": "SC3_SYSTEM",
+      "characters": [],
+      "location": "L3",
+      "action": "An elegant Saudi hospitality spread assembles on a low table: gold-accented dallah coffee pots, small finjan cups, dates in a brass bowl and a large rice and lamb platter, hands placing each item gracefully",
+      "camera": {
+        "shot_size": "INSERT",
+        "angle": "overhead",
+        "lens_mm": 50,
+        "movement": "slow overhead slide"
+      },
+      "lighting": "warm lantern light, rich sand and gold tones with olive green accents, cinematic food photography",
+      "vo_ar": "",
+      "overlay_ar": [
+        {
+          "text": "عرض واحد\nقاعة · ضيافة · خدمات",
+          "start_s": 24.2,
+          "end_s": 26.9,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "sfx": "soft clinks of cups",
+      "negative_extra": [],
+      "generation": {
+        "mode": "text_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted"
+    },
+    {
+      "id": "HERO42_10",
+      "pdf_ref": "8",
+      "start_s": 27,
+      "end_s": 31,
+      "beat": "journey 4 · contract and deposit",
+      "scene": "SC3_SYSTEM",
+      "characters": [
+        "C1"
+      ],
+      "location": "L1",
+      "action": "He signs a printed contract on the wooden coffee table with a pen, the document text is soft and unreadable, then looks up with a small relieved smile",
+      "camera": {
+        "shot_size": "CU",
+        "lens_mm": 50,
+        "movement": "slow push-in from the pen to his face"
+      },
+      "lighting": "warm golden key light, warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "سعر وشروط مكتوبة… وعقد وعربون يثبت حجزك.",
+      "overlay_ar": [
+        {
+          "text": "سعر وشروط مكتوبة قبل ما تأكد",
+          "start_s": 27.6,
+          "end_s": 30.9,
+          "position": "lower_third",
+          "style": "headline"
+        }
+      ],
+      "claims": [
+        "CLM_WRITTEN_TERMS",
+        "CLM_CONTRACT_DEPOSIT"
+      ],
+      "sfx": "",
+      "negative_extra": [
+        "readable document text",
+        "official stamps",
+        "cash",
+        "card terminal"
+      ],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 27.2,
+      "vo_end_s": 30.8,
+      "notes": "Replaces PDF shot 8 («احجز» + «الدفع داخل المنصة… محفوظ ومضمون»), banned by brand_facts.md. OPEN: owner to confirm whether the contract is paper or electronic."
+    },
+    {
+      "id": "HERO42_11",
+      "pdf_ref": "9",
+      "start_s": 31,
+      "end_s": 37,
+      "beat": "payoff · the occasion",
+      "scene": "SC4_EVENT",
+      "characters": [
+        "C1",
+        "C5"
+      ],
+      "location": "L3",
+      "action": "He welcomes a group of guests at the entrance, shakes hands and pours Arabic coffee from a dallah, everyone laughing naturally; the move ends in a wide establishing view",
+      "camera": {
+        "shot_size": "MS",
+        "lens_mm": 35,
+        "movement": "smooth gimbal follow ending wide"
+      },
+      "lighting": "dusk, warm lanterns, warm golden light, olive green, sand beige and calm gold palette",
+      "vo_ar": "وأنت؟ تعيش مناسبتك… وبالك مرتاح.",
+      "overlay_ar": [],
+      "claims": [],
+      "sfx": "coffee pouring, warm laughter, orchestra swells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "image_to_video",
+        "seed": null,
+        "source_ratios": [
+          "16x9"
+        ]
+      },
+      "status": "scripted",
+      "vo_start_s": 31.6,
+      "vo_end_s": 35.8
+    },
+    {
+      "id": "HERO42_12",
+      "pdf_ref": "10",
+      "start_s": 37,
+      "end_s": 42,
+      "beat": "end card",
+      "scene": "SC5_END",
+      "characters": [],
+      "location": "",
+      "action": "Motion graphics: olive-green background with a soft light shimmer; the official logo appears with a calm dissolve",
+      "camera": {},
+      "lighting": "",
+      "vo_ar": "مناسبتك… تبدأ من هنا.",
+      "overlay_ar": [
+        {
+          "text": "مناسبتك… تبدأ من هنا",
+          "start_s": 38.6,
+          "end_s": 42.0,
+          "position": "lower_third",
+          "style": "headline"
+        },
+        {
+          "text": "قريبًا",
+          "start_s": 39.4,
+          "end_s": 42.0,
+          "position": "bottom",
+          "style": "cta"
+        }
+      ],
+      "claims": [],
+      "sfx": "music resolves, no bells",
+      "negative_extra": [],
+      "generation": {
+        "mode": "graphics",
+        "seed": null,
+        "source_ratios": [
+          "9x16",
+          "16x9"
+        ],
+        "tool": "After Effects / CapCut",
+        "color": "#33650C"
+      },
+      "status": "scripted",
+      "vo_start_s": 37.6,
+      "vo_end_s": 40.2,
+      "logo": {
+        "start_s": 37.8,
+        "end_s": 42.0,
+        "width_frac": 0.3,
+        "variant": "dark",
+        "fade_s": 0.6
+      }
+    }
+  ]
 }

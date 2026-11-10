@@ -1,11 +1,11 @@
 {
   "campaign": "Season Venue",
   "source_document": "source/source_campaign.pdf",
-  "source_status": "missing",
-  "source_note": "source_campaign.pdf was not present in the repository at scaffold time. All creative fields stay empty until the PDF is ingested (python scripts/studio.py ingest).",
-  "expected_video_count": 22,
+  "source_status": "ingested",
+  "source_note": "source_campaign.pdf ingested 2026-11-10 (25 pages). brand_facts.md overrides it; banned claims are rewritten per the corrections table.",
   "video_ids": [
     "HERO42",
+    "HERO15",
     "T1",
     "T2",
     "T3",
@@ -25,8 +25,7 @@
     "Y2",
     "Y3",
     "Y4",
-    "Y5",
-    "UNIDENTIFIED_22"
+    "Y5"
   ],
   "output_targets": {
     "9x16": [
@@ -47,7 +46,7 @@
     "launch_note": "Riyadh is the launch city; do not present the brand as Riyadh-only.",
     "cta_placeholder": "[الموقع الإلكتروني]",
     "partner_cta_placeholder": "[رقم التواصل]",
-    "cta_note": "Final public URL/number not set by the owner yet. demo.wady.sa must never be used as a CTA.",
+    "cta_note": "Owner instruction 2026-11-10: CTA is «قريبًا» until the official URL and contact number are sent. demo.wady.sa is never a CTA.",
     "logo_supplied": true,
     "logo_path": "assets/brand/logo_transparent.png",
     "logo_dark_bg_path": "assets/brand/logo_transparent_for_dark_bg.png",
@@ -55,9 +54,9 @@
     "logo_rule": "Use as-is. Never redraw, recolor or regenerate the logo with AI.",
     "font_licensed": false,
     "font_path": "assets/brand/font.ttf",
-    "font_note": "Brand font is 29LT Bukra Wide (commercial). Only use it if the owner supplies licensed files; otherwise renders are DRAFT with an owner-approved open font.",
-    "green_system_decision": "pending",
-    "green_system_note": "Logo/deck use olive #33650C, posters use deep green #005731. Owner must pick one before final renders. Until then: logo green + logo gold.",
+    "font_note": "Final renders need licensed 29LT Bukra files. Until then: Tajawal, renders marked DRAFT (owner instruction 2026-11-10).",
+    "green_system_decision": "#33650C",
+    "green_system_note": "Owner chose olive #33650C on 2026-11-10.",
     "roles": {
       "primary": "#33650C",
       "accent": "#CBA401",
@@ -77,7 +76,12 @@
       "beige": "#EFE6D8",
       "muted_gold": "#C2A15A",
       "note": "CLAUDE.md suggestions; official brand colours override them."
-    }
+    },
+    "draft_font_family": "Tajawal",
+    "draft_font_path": "assets/brand/fonts/Tajawal-Bold.ttf",
+    "draft_font_licence": "SIL Open Font License 1.1 (assets/brand/fonts/OFL.txt)",
+    "font_family": "29LT Bukra",
+    "cta_text": "قريبًا"
   },
   "audio": {
     "loudness_target_lufs": -14.0,
@@ -86,9 +90,24 @@
     "forbidden_sfx": [
       "alert chime",
       "notification chime",
+      "bell",
+      "ringtone",
       "ribbon cutting",
       "scissors snip"
-    ]
+    ],
+    "voice": {
+      "provider": "ElevenLabs",
+      "name": "Nasser AlJubaily — Authentic Saudi Pro",
+      "model": "Eleven v4",
+      "settings": {
+        "stability": 0.6,
+        "similarity": 0.75
+      },
+      "tone": "formal, calm, confident",
+      "commercial_licence_confirmed": false,
+      "source": "source_campaign.pdf p3",
+      "note": "Record all 22 VOs in one session for consistent tone."
+    }
   },
   "vo_pacing": {
     "language": "ar-SA (Saudi dialect)",
@@ -195,6 +214,18 @@
       "approved": true,
       "wording": "قاعات وشاليهات واستراحات شريكة",
       "source": "poster 1; brand_facts.md"
+    },
+    {
+      "id": "CLM_PAIN_QUESTIONS",
+      "approved": true,
+      "wording": "Rhetorical questions about the old way of booking (calls to ask a price, deposits to unknown accounts). They make no claim about Season Venue.",
+      "source": "source_campaign.pdf HERO-42 hook; reviewed against brand_facts.md"
+    },
+    {
+      "id": "CLM_FOLLOW_UP",
+      "approved": true,
+      "wording": "نتابع الحجز حتى تسليم القاعة",
+      "source": "poster 2; brand_facts.md"
     }
   ],
   "required_disclosures": [
@@ -333,5 +364,16 @@
     "فاتورة",
     "تقويم المالك"
   ],
-  "product_flow_path": "plans/product_flow.json"
+  "product_flow_path": "plans/product_flow.json",
+  "safe_area_px": {
+    "9x16": {
+      "top": 250,
+      "bottom": 420
+    },
+    "16x9": {
+      "top": 60,
+      "bottom": 60
+    }
+  },
+  "expected_video_count": 22
 }

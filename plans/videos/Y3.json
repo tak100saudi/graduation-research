@@ -2,18 +2,37 @@
   "id": "Y3",
   "kind": "performance",
   "family": "Y",
-  "family_note": "Y-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "YouTube Shorts",
+  "title_ar": "«كيف نوثّق المكان قبل ما يظهر لك؟»",
+  "tone": "تنظيم",
+  "duration_s": 20,
+  "duration_source": "source_campaign.pdf p20",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
   ],
-  "shots": [],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p20",
+  "source_status": "pending_script",
+  "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
+  "subtitles": false,
   "mandatory_corrections": [
+    {
+      "replace": "«كيف نوثّق المكان قبل ما يظهر لك؟»",
+      "with": "كيف يطلب العميل مناسبته؟ (6 خطوات) — real request-form recording",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "«موثّق / أماكن موثّقة» وشارة موثّق",
+      "with": "قاعات وشاليهات واستراحات شريكة",
+      "claims": [
+        "CLM_PARTNER_VENUES"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
     {
       "replace": "«كيف نوثّق المكان»",
       "with": "كيف يطلب العميل مناسبته؟ (6 خطوات) — screen recording of the real request flow",
@@ -22,5 +41,6 @@
       ],
       "source": "brand_facts.md"
     }
-  ]
+  ],
+  "shots": []
 }

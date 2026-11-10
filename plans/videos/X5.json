@@ -2,18 +2,37 @@
   "id": "X5",
   "kind": "performance",
   "family": "X",
-  "family_note": "X-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "X",
+  "title_ar": "«لأصحاب الاستراحات»",
+  "tone": "تنظيم (جمهور المالك)",
+  "duration_s": 18,
+  "duration_source": "source_campaign.pdf p18",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "16x9",
+    "9x16"
   ],
-  "shots": [],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p18",
+  "source_status": "pending_script",
+  "platform_style": "16:9 primary + 9:16 alt; most views are muted so Arabic subtitles are burned in; calmer, more persuasive pace; tweet copy written per ad.",
+  "subtitles": true,
   "mandatory_corrections": [
+    {
+      "replace": "«حجوزات مؤكدة ومدفوعة» / «سجّل مكانك مجانًا»",
+      "with": "عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات (ثلاثة أشهر أو عشرة حجوزات) — «سجّل مكانك» without «مجانًا»",
+      "claims": [
+        "CLM_PARTNER_NEW_CLIENTS",
+        "CLM_PARTNER_TRIAL"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Unconfirmed features (date/count filter, reminder, invoice, owner calendar, payment policy)",
+      "with": "delete the line",
+      "claims": [],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
     {
       "replace": "«حجوزات مؤكدة ومدفوعة» للملاك",
       "with": "عملاء جدد بدون تكلفة تسويق، وبدون عمولة في فترة الإثبات",
@@ -23,5 +42,6 @@
       ],
       "source": "brand_facts.md"
     }
-  ]
+  ],
+  "shots": []
 }

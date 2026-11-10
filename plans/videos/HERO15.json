@@ -1,0 +1,53 @@
+{
+  "id": "HERO15",
+  "kind": "hero_cutdown",
+  "platform": "Reels, TikTok, Snapchat",
+  "title_ar": "النسخة المختصرة",
+  "duration_s": 15,
+  "duration_source": "source_campaign.pdf p7",
+  "fps": 24,
+  "aspect_ratios": [
+    "9x16",
+    "16x9"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf pp7-8",
+  "source_status": "pending_script",
+  "notes": "Same Faisal journey compressed; 9:16 primary. Reuse HERO42 shots where possible.",
+  "subtitles": true,
+  "mandatory_corrections": [
+    {
+      "replace": "«السعر قدامك / ظاهر على كل مكان / السعر معلن»",
+      "with": "سعر وشروط مكتوبة قبل ما تأكد",
+      "claims": [
+        "CLM_WRITTEN_TERMS"
+      ],
+      "source": "brand_facts.md"
+    },
+    {
+      "replace": "«موثّق / أماكن موثّقة» وشارة موثّق",
+      "with": "قاعات وشاليهات واستراحات شريكة",
+      "claims": [
+        "CLM_PARTNER_VENUES"
+      ],
+      "source": "brand_facts.md"
+    },
+    {
+      "replace": "«احجز…» press as instant booking",
+      "with": "طلب واحد.. ونرجع لك بعرض واحد",
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "source": "brand_facts.md"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md"
+    }
+  ],
+  "shots": []
+}

@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 
 from . import cost
-from .model import Project, save_json, validate_video
+from .model import Project, save_json, source_ratios, validate_video
 from .prompts import build_package
 from .providers import VideoProvider, get_provider
 from .qc import check_clip
@@ -22,7 +22,7 @@ def select_packages(project: Project, vid: str, shots: list[int] | None, ratios:
     if not all_shots:
         raise GenerationBlocked(f"{vid} has no shots yet — reconcile the plan with source_campaign.pdf first")
     chosen = [all_shots[i - 1] for i in shots] if shots else all_shots
-    return [build_package(project, video, s, r) for r in ratios for s in chosen]
+    return [build_package(project, video, s, r) for r in ratios for s in chosen if r in source_ratios(video, s)]
 
 
 def preflight(project: Project, vid: str, packages: list[dict]) -> None:

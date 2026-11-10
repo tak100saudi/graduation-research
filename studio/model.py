@@ -108,12 +108,20 @@ class Project:
         return self.videos[vid]
 
     def clip_path(self, vid: str, shot_index: int, ratio: str | None = None) -> Path:
+        """9:16 takes are VIDEOID_NN.mp4 (CLAUDE.md naming); other ratios add _<ratio>."""
         base = self.root / "assets" / "clips"
-        if ratio:
-            specific = base / f"{vid}_{shot_index:02d}_{ratio}.mp4"
-            if specific.exists():
-                return specific
-        return base / f"{vid}_{shot_index:02d}.mp4"
+        if ratio and ratio != "9x16":
+            return base / f"{vid}_{shot_index:02d}_{ratio}.mp4"
+        specific = base / f"{vid}_{shot_index:02d}_9x16.mp4"
+        return specific if specific.exists() else base / f"{vid}_{shot_index:02d}.mp4"
+
+    def source_clip(self, vid: str, shot_index: int, target_ratio: str) -> tuple[Path, str]:
+        """The take used for target_ratio: native if generated in that ratio, else the source ratio's take."""
+        video = self.video(vid)
+        shot = video["shots"][shot_index - 1]
+        ratios = source_ratios(video, shot)
+        use = target_ratio if target_ratio in ratios else ratios[0]
+        return self.clip_path(vid, shot_index, use), use
 
 
 @dataclass
@@ -132,6 +140,15 @@ class Report:
 
     def as_dict(self) -> dict:
         return {"errors": self.errors, "blockers": self.blockers, "warnings": self.warnings}
+
+
+def video_fps(project: "Project", video: dict) -> int:
+    return int(video.get("fps") or project.campaign.get("fps", 24))
+
+
+def source_ratios(video: dict, shot: dict) -> list[str]:
+    """Ratios this shot is generated in. Others are reframed from the first one in the edit."""
+    return shot.get("generation", {}).get("source_ratios") or list(video.get("aspect_ratios", []))
 
 
 def scan_claims(text: str) -> list[str]:
@@ -224,6 +241,11 @@ def validate_video(project: Project, video: dict) -> Report:
         mode = shot.get("generation", {}).get("mode")
         if mode not in GEN_MODES:
             r.errors.append(f"{sid}: generation.mode must be one of {sorted(GEN_MODES)}")
+        src_ratios = shot.get("generation", {}).get("source_ratios")
+        if src_ratios is not None:
+            bad = [x for x in src_ratios if x not in project.campaign.get("output_targets", {})]
+            if bad or not src_ratios:
+                r.errors.append(f"{sid}: generation.source_ratios must be a non-empty subset of output targets")
 
         # Continuity references
         for cid in shot.get("characters", []):
@@ -234,8 +256,10 @@ def validate_video(project: Project, video: dict) -> Report:
             if not c.get("defined") or not c.get("anchor_description"):
                 r.blockers.append(f"{sid}: character {cid} not defined in continuity bible")
             if mode in ("text_to_video", "image_to_video"):
-                if c.get("consent", {}).get("status") != "signed":
-                    r.blockers.append(f"{sid}: character {cid} has no signed consent record")
+                consent = c.get("consent", {}).get("status")
+                if consent not in ("signed", "synthetic_ai"):
+                    r.blockers.append(f"{sid}: character {cid} needs a signed consent record (real person) "
+                                      f"or consent.status='synthetic_ai' (AI-generated, resembles no real person)")
                 if not c.get("reference_images"):
                     r.blockers.append(f"{sid}: character {cid} has no reference images for identity lock")
             scene = shot.get("scene", "")
@@ -252,11 +276,20 @@ def validate_video(project: Project, video: dict) -> Report:
             elif not l.get("defined") or not l.get("anchor_description"):
                 r.blockers.append(f"{sid}: location {loc} not defined in continuity bible")
 
-        # Screens must be authentic recordings, never generated
-        if shot.get("shows_product_ui") and mode != "screen_recording":
-            r.errors.append(f"{sid}: product UI must use an authentic screen recording (mode=screen_recording)")
+        # Screens must be authentic recordings, never generated: either the whole shot is a
+        # recording, or a generated blank-green phone screen gets a tracked screen_insert.
+        insert = shot.get("screen_insert")
+        if shot.get("shows_product_ui") and mode != "screen_recording" and not insert:
+            r.errors.append(f"{sid}: product UI must be an authentic screen recording (mode=screen_recording or screen_insert)")
+        recordings = []
         if mode == "screen_recording":
-            rec = shot.get("generation", {}).get("source_path")
+            recordings.append(shot.get("generation", {}))
+        if insert:
+            recordings.append(insert)
+            if "green screen" not in (shot.get("action", "") + " " + shot.get("ui_notes", "")).lower():
+                r.errors.append(f"{sid}: screen_insert needs the generated phone to show a blank green screen")
+        for rec_spec in recordings:
+            rec = rec_spec.get("source_path")
             if not rec or not (project.root / rec).exists():
                 r.blockers.append(f"{sid}: authentic screen recording missing ({rec or 'no source_path'})")
 
@@ -299,12 +332,12 @@ def validate_video(project: Project, video: dict) -> Report:
         for feat in project.campaign.get("forbidden_ui_features", []):
             if normalize(feat) in ui_text:
                 r.errors.append(f"{sid}: shows '{feat}', which the real product does not have")
-        if mode == "screen_recording":
+        for rec_spec in recordings:
             flow = project.product_flow
             steps = {st["id"] for st in flow.get("steps", [])}
-            step = shot.get("generation", {}).get("flow_step")
-            if step not in steps:
-                r.errors.append(f"{sid}: screen recording must name generation.flow_step from plans/product_flow.json")
+            wanted = rec_spec.get("flow_steps") or [rec_spec.get("flow_step")]
+            if not wanted or any(w not in steps for w in wanted):
+                r.errors.append(f"{sid}: screen recording must name flow_step(s) from plans/product_flow.json")
             if not flow.get("verified_against_demo"):
                 r.blockers.append(f"{sid}: request flow not yet verified on the live demo site")
         for ov in shot.get("overlay_ar", []):
@@ -324,7 +357,8 @@ def validate_video(project: Project, video: dict) -> Report:
                     )
 
         # SFX guard
-        sfx = (shot.get("sfx") or "").lower()
+        # "no bells" / "without ringtone" are instructions, not sounds
+        sfx = re.sub(r"\b(no|without|avoid)\s+[\w-]+(\s+[\w-]+)?", " ", (shot.get("sfx") or "").lower())
         for bad in project.campaign.get("audio", {}).get("forbidden_sfx", []):
             if bad in sfx:
                 r.errors.append(f"{sid}: forbidden SFX '{bad}'")
@@ -372,6 +406,12 @@ def validate_project(project: Project) -> Report:
         r.blockers.append("brand: licensed brand font (29LT Bukra) not supplied — overlay renders stay DRAFT")
     if brand.get("green_system_decision", "pending") == "pending":
         r.blockers.append("brand: owner must choose the green system (#33650C olive vs #005731 deep green)")
+    vo = c.get("audio", {}).get("voice", {})
+    if vo and not vo.get("commercial_licence_confirmed"):
+        r.blockers.append(f"audio: commercial licence for VO voice “{vo.get('name')}” not confirmed")
+    draft_font = brand.get("draft_font_path")
+    if draft_font and not (project.root / draft_font).is_file():
+        r.errors.append(f"brand: draft font missing at {draft_font}")
     if project.product_flow and not project.product_flow.get("verified_against_demo"):
         r.blockers.append("campaign: request flow (plans/product_flow.json) not verified on the demo site")
     for vid in ids:

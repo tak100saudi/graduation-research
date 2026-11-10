@@ -2,15 +2,37 @@
   "id": "Y1",
   "kind": "performance",
   "family": "Y",
-  "family_note": "Y-series performance concept",
-  "duration_s": null,
-  "duration_source": "pending_source",
-  "concept": "",
-  "source_ref": "",
-  "source_status": "pending_source",
+  "platform": "YouTube Shorts",
+  "title_ar": "«قبل وبعد: نفس العزيمة»",
+  "tone": "تنظيم",
+  "duration_s": 18,
+  "duration_source": "source_campaign.pdf p19",
+  "fps": 30,
   "aspect_ratios": [
-    "9x16",
-    "16x9"
+    "9x16"
+  ],
+  "concept": "",
+  "source_ref": "source_campaign.pdf p19",
+  "source_status": "pending_script",
+  "platform_style": "Highest cinematic quality; ending loops into the opening where possible.",
+  "subtitles": false,
+  "mandatory_corrections": [
+    {
+      "replace": "«دقايق / احجز في دقائق / تأكيد فوري»",
+      "with": "طلب واحد.. ونرجع لك بعرض واحد",
+      "claims": [
+        "CLM_ONE_OFFER"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    },
+    {
+      "replace": "Instant-booking / browse screens",
+      "with": "Screen recording of the real request form only (plans/product_flow.json)",
+      "claims": [
+        "CLM_SIX_STEPS"
+      ],
+      "source": "brand_facts.md / source_campaign.pdf p24"
+    }
   ],
   "shots": []
 }

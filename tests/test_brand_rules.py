@@ -68,7 +68,9 @@ def test_repo_brand_matches_owner_kit():
     assert b["roles"]["primary"] == kit["colors"]["logo_green"] and b["roles"]["accent"] == kit["colors"]["logo_gold"]
     for k in ("logo_path", "logo_dark_bg_path", "logo_original_path"):
         assert (REPO / b[k]).is_file()
-    assert b["font_licensed"] is False and b["green_system_decision"] == "pending"
+    assert b["font_licensed"] is False and b["green_system_decision"] == "#33650C"
+    assert b["cta_text"] == "قريبًا" and (REPO / b["draft_font_path"]).is_file()
+    assert (REPO / "assets/brand/fonts/OFL.txt").is_file()
 
 
 def test_repo_rules_cover_every_brand_facts_correction():

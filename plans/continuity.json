@@ -1,61 +1,225 @@
 {
   "_doc": "Continuity bible. Every anchor_description is injected VERBATIM into every prompt that references the id, so wording must stay frozen once approved. Generative shots that show a character require consented reference images (consent.status == 'signed') before generation is allowed.",
   "global_look": {
-    "anchor_description": "contemporary Saudi Arabia, authentic and respectful cultural detail, warm natural light, set dressing in olive green, warm cream and gold accents, premium but understated, photorealistic cinematic commercial",
+    "anchor_description": "premium Saudi TV commercial, cinematic photorealistic, anamorphic look, 35/50mm lenses, shallow depth of field, subtle fine film grain, authentic contemporary Saudi detail",
     "grade": {
       "lut_path": "",
-      "notes": "Warm neutral highlights, gentle contrast, no teal-orange push."
+      "chaos": "cold, desaturated, leaning grey with a faint burnt-orange accent",
+      "system": "warm, olive green, sand beige and calm gold",
+      "notes": "Apply the same LUT to every shot of the same character for skin-tone consistency."
     },
+    "camera_rule": "Slow, stable moves (dolly, slider, gimbal). Handheld only in chaos scenes.",
     "palette_tokens": [
       "#33650C",
       "#CBA401",
       "#FAF6ED"
     ],
-    "aspect_framing_rule": "Compose with a centre-safe area so 9:16 and 16:9 can both be generated natively; keep faces and key action inside the central 56% width.",
-    "palette_note": "Owner still to choose olive #33650C vs deep green #005731; tokens follow brand.json interim rule."
+    "palette_note": "Owner approved olive green #33650C (2026-11-10). The PDF's #0F5132 is superseded.",
+    "aspect_framing_rule": "Generate 16:9 (4K where possible) and crop 9:16 in the edit; phone close-ups are generated vertical. Keep faces and key action in the centre third."
   },
   "characters": [
     {
-      "id": "CHAR_PENDING_1",
-      "defined": false,
-      "role": "",
-      "anchor_description": "",
+      "id": "C1",
+      "defined": true,
+      "role": "فيصل، صاحب المناسبة (البطل)",
+      "anchor_description": "a Saudi man in his early 30s with a short neat black beard and warm brown eyes, wearing a crisp white thobe, a red-and-white shemagh worn loosely and a silver wristwatch",
       "wardrobe": {},
       "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/C1_ref_01.png"
+      ],
+      "reference_note": "front, 3/4 and profile stills; same face in every HERO shot",
       "consent": {
-        "status": "missing",
+        "status": "synthetic_ai",
         "record_path": "",
-        "talent_name": ""
+        "note": "AI-generated person; must not resemble any real individual. Approve the reference still before any video."
+      },
+      "seed": null
+    },
+    {
+      "id": "C2",
+      "defined": true,
+      "role": "أم فيصل",
+      "anchor_description": "a Saudi woman in her late 50s wearing an elegant black abaya and a dark hijab, with a gentle smile",
+      "wardrobe": {},
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/C2_ref_01.png"
+      ],
+      "reference_note": "",
+      "consent": {
+        "status": "synthetic_ai",
+        "record_path": "",
+        "note": "AI-generated person; must not resemble any real individual. Approve the reference still before any video."
+      },
+      "seed": null
+    },
+    {
+      "id": "C3",
+      "defined": true,
+      "role": "نورة، منسّقة فعاليات شركة",
+      "anchor_description": "a Saudi woman in her early 30s wearing a modern-cut black abaya and a navy hijab, holding a tablet",
+      "wardrobe": {},
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/C3_ref_01.png"
+      ],
+      "reference_note": "tablet screen must be blank green (screen insert only)",
+      "consent": {
+        "status": "synthetic_ai",
+        "record_path": "",
+        "note": "AI-generated person; must not resemble any real individual. Approve the reference still before any video."
+      },
+      "seed": null
+    },
+    {
+      "id": "C4",
+      "defined": true,
+      "role": "أبو سعد، مالك استراحة",
+      "anchor_description": "a Saudi man in his mid 40s with a grey-flecked beard, wearing a beige thobe and a white ghutra",
+      "wardrobe": {},
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/C4_ref_01.png"
+      ],
+      "reference_note": "",
+      "consent": {
+        "status": "synthetic_ai",
+        "record_path": "",
+        "note": "AI-generated person; must not resemble any real individual. Approve the reference still before any video."
+      },
+      "seed": null
+    },
+    {
+      "id": "C5",
+      "defined": true,
+      "role": "الضيوف",
+      "anchor_description": "a group of Saudi men of mixed ages in white thobes and shemaghs with natural, relaxed expressions",
+      "wardrobe": {},
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/C5_ref_01.png"
+      ],
+      "reference_note": "group still; faces should stay consistent across S/T/HERO party scenes",
+      "consent": {
+        "status": "synthetic_ai",
+        "record_path": "",
+        "note": "AI-generated person; must not resemble any real individual. Approve the reference still before any video."
       },
       "seed": null
     }
   ],
   "locations": [
     {
-      "id": "LOC_PENDING_1",
-      "defined": false,
-      "anchor_description": "",
+      "id": "L1",
+      "defined": true,
+      "name_ar": "مجلس فيصل في شقة بالرياض",
+      "anchor_description": "a modern Riyadh apartment majlis with low floor seating in sand beige, a dark walnut coffee table and sheer curtains",
       "time_of_day": "",
       "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/L1_ref_01.png"
+      ],
       "licence": {
-        "status": "missing",
+        "status": "synthetic_ai",
+        "record_path": ""
+      }
+    },
+    {
+      "id": "L2",
+      "defined": true,
+      "name_ar": "استراحة «الواقع المخيّب»",
+      "anchor_description": "a dusty, poorly lit outdoor rest-house courtyard with faded artificial grass, plastic chairs and a metal gate",
+      "time_of_day": "flat grey daylight",
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/L2_ref_01.png"
+      ],
+      "licence": {
+        "status": "synthetic_ai",
+        "record_path": ""
+      }
+    },
+    {
+      "id": "L3",
+      "defined": true,
+      "name_ar": "استراحة المناسبة (مرتّبة)",
+      "anchor_description": "an elegant Saudi istiraha with Najdi-inspired mud-plaster walls, warm lanterns, majlis seating and palm trees",
+      "time_of_day": "dusk",
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/L3_ref_01.png"
+      ],
+      "licence": {
+        "status": "synthetic_ai",
+        "record_path": ""
+      }
+    },
+    {
+      "id": "L4",
+      "defined": true,
+      "name_ar": "قاعة أفراح",
+      "anchor_description": "a luxurious Saudi wedding hall with ivory and gold decor and soft chandelier light",
+      "time_of_day": "",
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/L4_ref_01.png"
+      ],
+      "licence": {
+        "status": "synthetic_ai",
+        "record_path": ""
+      }
+    },
+    {
+      "id": "L5",
+      "defined": true,
+      "name_ar": "مكتب شركة",
+      "anchor_description": "a modern Riyadh corporate office with glass walls and the city skyline",
+      "time_of_day": "golden hour",
+      "reference_images": [],
+      "reference_images_planned": [
+        "assets/references/L5_ref_01.png"
+      ],
+      "licence": {
+        "status": "synthetic_ai",
         "record_path": ""
       }
     }
   ],
   "negative_prompt_global": [
-    "any on-screen text, letters, captions, subtitles or Arabic script",
-    "logos, brand marks, watermarks",
-    "app screens, phone UI, website UI, dashboards",
-    "price tags, currency symbols, numbers",
-    "distorted hands, extra fingers, warped faces, uncanny eyes",
-    "identity drift, changing face or wardrobe between shots",
-    "ribbon cutting, scissors, alarm or notification visuals",
-    "alcohol, immodest clothing, culturally inaccurate dress",
-    "low resolution, flicker, jitter, morphing, cartoon look",
+    "distorted face",
+    "asymmetrical eyes",
+    "extra fingers",
+    "fused fingers",
+    "deformed hands",
+    "extra limbs",
+    "morphing face",
+    "character identity change",
+    "inconsistent clothing",
+    "flickering",
+    "warping background",
+    "unnatural motion",
+    "rubber limbs",
+    "jittery camera",
+    "gibberish text",
+    "fake Arabic letters",
+    "random logos",
+    "watermark",
+    "brand names",
+    "readable UI text",
+    "cartoon",
+    "CGI look",
+    "oversaturated",
+    "plastic skin",
+    "low resolution",
+    "blurry",
+    "duplicated people",
     "price lists or price displays",
     "verified badges or check-mark seals",
-    "booking calendars, instant-confirmation screens",
-    "bank or payment-provider logos"
-  ]
+    "government seals or official stamps",
+    "bank or payment-provider logos",
+    "alcohol",
+    "immodest clothing"
+  ],
+  "_source": "source_campaign.pdf pp1-2 (Character Bible, locations, NEG-GLOBAL). All characters are AI-generated; any real person or real venue needs written consent."
 }

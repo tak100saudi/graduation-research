@@ -93,7 +93,9 @@ def test_claims_block_without_evidence_and_pass_with_approved_evidence(tmp_path,
 
 def test_forbidden_sfx(tmp_path, video):
     v = copy.deepcopy(video); v["shots"][0]["sfx"] = "Alert Chime on reveal"
-    assert any("forbidden SFX" in e for e in errs(tmp_path, v).errors)
+    assert any("forbidden SFX" in e for e in errs(tmp_path / "a", v).errors)
+    v["shots"][0]["sfx"] = "soft vibration, no alert chime"
+    assert not any("forbidden SFX" in e for e in errs(tmp_path / "b", v).errors)
 
 
 def test_product_ui_must_be_authentic_recording(tmp_path, video):
